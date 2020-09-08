@@ -1,5 +1,6 @@
 import 'package:disc/screens/disc_quiz.dart';
 import 'package:disc/screens/discproperties.dart';
+import 'package:disc/screens/jsonstorage.dart';
 import 'package:disc/services/theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -48,10 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   GestureDetector(
                     behavior: HitTestBehavior.opaque,
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          CupertinoPageRoute(
-                              builder: (context) => Discproperties()));
+
                     },
                     child: AnimatedContainer(
                       duration: Duration(milliseconds: 200),

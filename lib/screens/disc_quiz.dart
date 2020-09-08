@@ -1,4 +1,3 @@
-
 import 'dart:async';
 import 'dart:convert';
 
@@ -10,7 +9,7 @@ import 'package:http/http.dart' as http;
 import 'package:outline_material_icons/outline_material_icons.dart';
 
 Future<Album>   fetchAlbum() async {
-  final response = await http.get('http://192.168.31.214:1337/QuestionDbs');
+  final response = await http.get('http://192.168.0.109:1337/QuestionDbs');
 
   //Linked with visahan.tk/animals
   // final response = await http.get('https://visahan.tk/animals.json');
@@ -35,7 +34,7 @@ class DISC_quizstate extends State<DISC_quiz> {
     super.initState();
     futureAlbum = fetchAlbum();
   }
-  
+
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([
@@ -88,7 +87,7 @@ class DISC_quizstate extends State<DISC_quiz> {
                           builder: (context, snapshot) {
                             if (snapshot.hasData) {
                               return Text(snapshot.data.question,
-                                      style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.bold));
+                                  style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.bold));
                             } else if (snapshot.hasError) {
                               return Text("${snapshot.error}");
                             }

@@ -1,3 +1,4 @@
+import 'package:disc/screens/disctypes.dart';
 import 'package:disc/services/theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -30,7 +31,7 @@ class DiscpropertiesState extends State<Discproperties> {
     home: Scaffold(
       appBar: AppBar(
         title: const Text('DISC PROPERTIES'),
-        backgroundColor: primaryColor,
+        backgroundColor: Colors.deepPurple,
       ),
       body: Center(
         child: AnimatedContainer(
@@ -68,6 +69,7 @@ class DiscpropertiesState extends State<Discproperties> {
                 ),
                 color: Colors.red[700],
                 onPressed: () {
+                  Navigator.push(context, new MaterialPageRoute(builder: (context) => new disctype(person: new Person(1))));
                 },
                 textColor: Colors.white,
 //                padding: const EdgeInsets.all(0.0),
@@ -86,6 +88,7 @@ class DiscpropertiesState extends State<Discproperties> {
                 ),
                 color: Colors.yellow[600],
                 onPressed: () {
+                  Navigator.push(context, new MaterialPageRoute(builder: (context) => new disctype(person: new Person(2))));
                 },
                 textColor: Colors.white,
 //                padding: const EdgeInsets.all(0.0),
@@ -104,6 +107,7 @@ class DiscpropertiesState extends State<Discproperties> {
                 ),
                 color: Colors.green[700],
                 onPressed: () {
+                  Navigator.push(context, new MaterialPageRoute(builder: (context) => new disctype(person: new Person(3))));
                 },
                 textColor: Colors.white,
 //                padding: const EdgeInsets.all(0.0),
@@ -122,6 +126,7 @@ class DiscpropertiesState extends State<Discproperties> {
                 ),
                 color: Colors.blue[700],
                 onPressed: () {
+                  Navigator.push(context, new MaterialPageRoute(builder: (context) => new disctype(person: new Person(4))));
                 },
                 textColor: Colors.white,
 //                padding: const EdgeInsets.all(0.0),
@@ -141,4 +146,11 @@ class DiscpropertiesState extends State<Discproperties> {
       ),
     ));
   }
+
+}
+
+class Person {
+  final int value;
+
+  Person(this.value);
 }
