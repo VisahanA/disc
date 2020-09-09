@@ -1,50 +1,57 @@
 import 'package:flutter/material.dart';
-import 'package:pie_chart/pie_chart.dart'; // import the package
+import 'package:pie_chart/pie_chart.dart';
 
-class discanalysis extends StatefulWidget {
-  discanalysis({Key key, this.title}) : super(key: key);
-  final String title;
+import 'home.dart'; // import the package
 
-  @override
-  discanalysisstate createState() => discanalysisstate();
-}
+class discanalysis extends StatelessWidget {
+  final Questioncount questioncount;
+  final Questioncount one;
+  final Questioncount two;
+  final Questioncount three;
+  final Questioncount four;
 
-class discanalysisstate extends State<discanalysis> {
+  discanalysis({Key key, @required this.questioncount, @required this.one, @required this.two, @required this.three, @required this.four}) : super(key: key){
+
+  }
   Map<String, double> data = new Map();
   bool _loadChart = false;
 
-  @override
-  void initState() {
-    data.addAll({
-      'Flutter': 37136,
-      'React Native': 69687,
-      'Xamarin': 40609,
-      'Ionic': 42544
-    });
-    super.initState();
-  }
-
   List<Color> _colors = [
-    Colors.teal,
-    Colors.blueAccent,
-    Colors.amberAccent,
-    Colors.redAccent
+    Colors.redAccent[700],
+    Colors.amberAccent[700],
+    Colors.greenAccent[700],
+    Colors.blueAccent[700],
   ];
 
   @override
   Widget build(BuildContext context) {
+
+    //Declaration of variables
+    double one = ((questioncount.one).toDouble());
+    double two =((questioncount.two).toDouble());
+    double three =((questioncount.three).toDouble());
+    double four =((questioncount.four).toDouble());
+
+
+    data.addAll({
+      'Dominance': one,
+      'Influence': two,
+      'Steadiness': three,
+      'Conscientiousness': four
+    });
+    _loadChart = true;
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text("DiscAnalysis"),
       ),
       body: Center(
         child: Column(
           children: <Widget>[
             SizedBox(
-              height: 50,
+              height: 100,
             ),
             Text(
-              'Number of Questions asked on StackOverflow',
+              'DISC Analysis',
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
@@ -56,9 +63,8 @@ class discanalysisstate extends State<discanalysis> {
               colorList:
               _colors, // if not declared, random colors will be chosen
               animationDuration: Duration(milliseconds: 1500),
-              chartLegendSpacing: 32.0,
-              chartRadius: MediaQuery.of(context).size.width /
-                  2.7, //determines the size of the chart
+              chartLegendSpacing: 16.0,
+              chartRadius: 200 , //determines the size of the chart
               showChartValuesInPercentage: true,
               showChartValues: true,
               showChartValuesOutside: false,
@@ -74,26 +80,14 @@ class discanalysisstate extends State<discanalysis> {
               ),
               chartType: ChartType.disc, //can be changed to ChartType.ring
             ) : SizedBox(
-              height: 150,
+              height: 300,
             ),
-
             SizedBox(
-              height: 50,
-            ),
-            RaisedButton(
-              color: Colors.blue,
-              child: Text('Click to Show Chart', style: TextStyle(
-                  color: Colors.white
-              ),),
-              onPressed: () {
-                setState(() {
-                  _loadChart = true;
-                });
-              },
+              height: 100,
             ),
           ],
         ),
       ),
     );
   }
-  }
+}

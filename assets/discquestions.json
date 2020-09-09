@@ -2,7 +2,12 @@
   {
     "id": 1,
     "Question": "What sort of colour do u prefer?",
-    "Options": "black,blue,grey",
+    "Options": [
+      "bold colors",
+      "a mix of all colors",
+      "i am comfortable only with two to three color",
+      "lover of grey, white, beige"
+    ],
     "created_by": {
       "id": 1,
       "firstname": "Visahan",
@@ -16,6 +21,222 @@
       "username": null
     },
     "created_at": "2020-09-03T14:18:06.231Z",
-    "updated_at": "2020-09-04T06:37:40.769Z"
+    "updated_at": "2020-09-04T18:43:47.407Z"
+  },
+  {
+    "id": 3,
+    "Question": "Consider you are in a new environment, would you like to initiate a talk to your neighbor?",
+    "Options": [
+      "I will talk if needed",
+      "i would love to initate conversation",
+      "i will wait for the other person to start",
+      "i dont like to talk to strangers"
+    ],
+    "created_by": {
+      "id": 1,
+      "firstname": "Visahan",
+      "lastname": "ashok",
+      "username": null
+    },
+    "updated_by": {
+      "id": 1,
+      "firstname": "Visahan",
+      "lastname": "ashok",
+      "username": null
+    },
+    "created_at": "2020-09-05T06:33:45.810Z",
+    "updated_at": "2020-09-05T06:33:45.820Z"
+  },
+  {
+    "id": 4,
+    "Question": "What is the first thing you do when you have a problem?",
+    "Options": [
+      "seeksolution",
+      "call a friend",
+      "get in your comfortable zone and think",
+      "start analysing it"
+    ],
+    "created_by": {
+      "id": 1,
+      "firstname": "Visahan",
+      "lastname": "ashok",
+      "username": null
+    },
+    "updated_by": {
+      "id": 1,
+      "firstname": "Visahan",
+      "lastname": "ashok",
+      "username": null
+    },
+    "created_at": "2020-09-09T05:16:45.332Z",
+    "updated_at": "2020-09-09T05:16:45.348Z"
+  },
+  {
+    "id": 5,
+    "Question": "What would you do when you are assigned a task as a team?",
+    "Options": [
+      "take leadership",
+      "have fun with the team",
+      "listen to process and do work",
+      "think about why you should work that"
+    ],
+    "created_by": {
+      "id": 1,
+      "firstname": "Visahan",
+      "lastname": "ashok",
+      "username": null
+    },
+    "updated_by": {
+      "id": 1,
+      "firstname": "Visahan",
+      "lastname": "ashok",
+      "username": null
+    },
+    "created_at": "2020-09-09T05:18:50.784Z",
+    "updated_at": "2020-09-09T05:18:50.793Z"
+  },
+  {
+    "id": 6,
+    "Question": "How do you feel when someone tells something about you?",
+    "Options": [
+      "try to develop from that",
+      "take it too much into heart",
+      "listen and never care",
+      "prove them wrong"
+    ],
+    "created_by": {
+      "id": 1,
+      "firstname": "Visahan",
+      "lastname": "ashok",
+      "username": null
+    },
+    "updated_by": {
+      "id": 1,
+      "firstname": "Visahan",
+      "lastname": "ashok",
+      "username": null
+    },
+    "created_at": "2020-09-09T05:20:21.728Z",
+    "updated_at": "2020-09-09T05:20:21.738Z"
+  },
+  {
+    "id": 7,
+    "Question": "How would you like to be in your work environment",
+    "Options": [
+      " To help co workers and finsih task peacefully",
+      "I wish others admire me",
+      "complete one task at a time",
+      "prove them wrong"
+    ],
+    "created_by": {
+      "id": 1,
+      "firstname": "Visahan",
+      "lastname": "ashok",
+      "username": null
+    },
+    "updated_by": {
+      "id": 1,
+      "firstname": "Visahan",
+      "lastname": "ashok",
+      "username": null
+    },
+    "created_at": "2020-09-09T05:21:56.093Z",
+    "updated_at": "2020-09-09T05:21:56.101Z"
+  },
+  {
+    "id": 8,
+    "Question": "How do you  see yourself the most?",
+    "Options": [
+      "Goal-oriented challenges",
+      "Firendly (or) emotional",
+      "co-operative(or)loyal",
+      "logical(or)perfectionist"
+    ],
+    "created_by": {
+      "id": 1,
+      "firstname": "Visahan",
+      "lastname": "ashok",
+      "username": null
+    },
+    "updated_by": {
+      "id": 1,
+      "firstname": "Visahan",
+      "lastname": "ashok",
+      "username": null
+    },
+    "created_at": "2020-09-09T05:24:59.616Z",
+    "updated_at": "2020-09-09T05:24:59.626Z"
+  },
+  {
+    "id": 9,
+    "Question": "How do you feel when you are in an environment to change?",
+    "Options": [
+      "Think how it helps with your goals",
+      "easily adaptable to the change",
+      "Not too comfortable to change",
+      "thinkinig about its results"
+    ],
+    "created_by": {
+      "id": 1,
+      "firstname": "Visahan",
+      "lastname": "ashok",
+      "username": null
+    },
+    "updated_by": {
+      "id": 1,
+      "firstname": "Visahan",
+      "lastname": "ashok",
+      "username": null
+    },
+    "created_at": "2020-09-09T05:26:29.445Z",
+    "updated_at": "2020-09-09T05:26:29.453Z"
+  },
+  {
+    "id": 10,
+    "Question": "What is the first thing you think when you have a function to attend?",
+    "Options": [
+      "plant about dress,gifts",
+      "think who will join the function",
+      "thnk about how the function will happen",
+      "fixing a time and start planning to work"
+    ],
+    "created_by": {
+      "id": 1,
+      "firstname": "Visahan",
+      "lastname": "ashok",
+      "username": null
+    },
+    "updated_by": {
+      "id": 1,
+      "firstname": "Visahan",
+      "lastname": "ashok",
+      "username": null
+    },
+    "created_at": "2020-09-09T05:28:11.463Z",
+    "updated_at": "2020-09-09T05:28:11.473Z"
+  },
+  {
+    "id": 11,
+    "Question": "When you talk to a person,On what basis you talk to them?",
+    "Options": [
+      "What should i do?",
+      "Just enjoy the time with the person",
+      "Ask how could you help them",
+      "Think why you should talk to them"
+    ],
+    "created_by": {
+      "id": 1,
+      "firstname": "Visahan",
+      "lastname": "ashok",
+      "username": null
+    },
+    "updated_by": {
+      "id": 1,
+      "firstname": "Visahan",
+      "lastname": "ashok",
+      "username": null
+    },
+    "created_at": "2020-09-09T05:29:15.320Z",
+    "updated_at": "2020-09-09T05:29:15.329Z"
   }
 ]

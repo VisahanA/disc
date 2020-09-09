@@ -52,7 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       Navigator.push(
                           context,
                           CupertinoPageRoute(
-                              builder: (context) => discanalysis()));
+                              builder: (context) =>  discanalysis(questioncount: new Questioncount(0,0,0,0,0))));
                     },
                     child: AnimatedContainer(
                       duration: Duration(milliseconds: 200),

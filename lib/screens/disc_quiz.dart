@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 
+import 'discanalysis.dart';
+
 
 Future<Album>   fetchAlbum(int i) async {
   final response = await http.get('http://192.168.1.6:1337/QuestionDbs');
@@ -18,7 +20,6 @@ Future<Album>   fetchAlbum(int i) async {
 }
 
 class DISC_quiz extends StatelessWidget {
-
   final Questioncount questioncount;
   final Questioncount one;
   final Questioncount two;
@@ -54,6 +55,8 @@ class DISC_quiz extends StatelessWidget {
     if(question_index<10) {
       futureAlbum = fetchAlbum(question_index);
     }
+
+
     int tap=0;
 
     return Scaffold(
@@ -130,13 +133,15 @@ class DISC_quiz extends StatelessWidget {
                       tap=0;
                       one=one-2;
                       question_index++;
-                      if(question_index==9) {
-                        Navigator.pushReplacement(
+                      if (question_index==10) {
+                        Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (BuildContext context) => new MyHomePage()));
+                                builder: (BuildContext context) => new discanalysis(
+                                    questioncount: new Questioncount(
+                                        question_index, one, two, three, four))));
                         return;
-                      }
+                         }
                       Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
@@ -181,11 +186,13 @@ class DISC_quiz extends StatelessWidget {
                       tap=0;
                       two=two-2;
                       question_index++;
-                      if(question_index==9) {
-                        Navigator.pushReplacement(
+                      if (question_index==10) {
+                        Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (BuildContext context) => new MyHomePage()));
+                                builder: (BuildContext context) => new discanalysis(
+                                    questioncount: new Questioncount(
+                                        question_index, one, two, three, four))));
                         return;
                       }
                       Navigator.pushReplacement(
@@ -231,11 +238,13 @@ class DISC_quiz extends StatelessWidget {
                       tap=0;
                       three=three-2;
                       question_index++;
-                      if(question_index==9) {
-                        Navigator.pushReplacement(
+                      if (question_index==10) {
+                        Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (BuildContext context) => new MyHomePage()));
+                                builder: (BuildContext context) => new discanalysis(
+                                    questioncount: new Questioncount(
+                                        question_index, one, two, three, four))));
                         return;
                       }
                       Navigator.pushReplacement(
@@ -281,11 +290,13 @@ class DISC_quiz extends StatelessWidget {
                       tap=0;
                       four=four-2; // futureAlbum = fetchAlbum(question_index);
                       question_index++;
-                      if(question_index==9) {
-                        Navigator.pushReplacement(
+                      if (question_index==10) {
+                        Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (BuildContext context) => new MyHomePage()));
+                                builder: (BuildContext context) => new discanalysis(
+                                    questioncount: new Questioncount(
+                                        question_index, one, two, three, four))));
                         return;
                       }
                       Navigator.pushReplacement(
