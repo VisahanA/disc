@@ -10,9 +10,7 @@ class discanalysis extends StatelessWidget {
   final Questioncount three;
   final Questioncount four;
 
-  discanalysis({Key key, @required this.questioncount, @required this.one, @required this.two, @required this.three, @required this.four}) : super(key: key){
-
-  }
+  discanalysis({Key key, @required this.questioncount, @required this.one, @required this.two, @required this.three, @required this.four}) : super(key: key);
   Map<String, double> data = new Map();
   bool _loadChart = false;
 
@@ -43,8 +41,16 @@ class discanalysis extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("DiscAnalysis"),
+        backgroundColor: Colors.deepPurple,
       ),
-      body: Center(
+      body: Container(
+        decoration: BoxDecoration(
+            gradient: LinearGradient(
+                begin:Alignment.topCenter,
+                end:Alignment.bottomCenter,
+                stops: [0.6, 1],
+                colors: [Colors.white,Colors.pinkAccent[100]])
+        ),
         child: Column(
           children: <Widget>[
             SizedBox(
@@ -84,6 +90,24 @@ class discanalysis extends StatelessWidget {
             ),
             SizedBox(
               height: 100,
+            ),
+            FlatButton(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20.0),
+              ),
+              color: Colors.blueAccent[700],
+              onPressed: () {
+                Navigator.push(context, new MaterialPageRoute(builder: (context) => new MyHomePage()));
+              },
+              textColor: Colors.white,
+//                padding: const EdgeInsets.all(0.0),
+              child: Container(
+                padding: const EdgeInsets.all(10.0),
+                child: const Text(
+                    'Go to Main page',
+                    style: TextStyle(fontSize: 18)
+                ),
+              ),
             ),
           ],
         ),

@@ -223,7 +223,7 @@ class DISC_quiz extends StatelessWidget {
                 ),
               ),
               Container(height:30),
-              FlatButton(
+              RaisedButton(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20.0),
                 ),
