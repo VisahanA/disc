@@ -1,13 +1,13 @@
 import 'package:disc/screens/disc_quiz.dart';
+import 'package:disc/screens/discanalysis.dart';
 import 'package:disc/screens/discproperties.dart';
-import 'package:disc/screens/jsonstorage.dart';
 import 'package:disc/services/theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/services.dart';
 import 'package:outline_material_icons/outline_material_icons.dart';
-import 'package:toast/toast.dart';
+
 
 
 class MyHomePage extends StatefulWidget {
@@ -49,7 +49,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   GestureDetector(
                     behavior: HitTestBehavior.opaque,
                     onTap: () {
-
+                      Navigator.push(
+                          context,
+                          CupertinoPageRoute(
+                              builder: (context) => discanalysis()));
                     },
                     child: AnimatedContainer(
                       duration: Duration(milliseconds: 200),
@@ -78,7 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     Navigator.push(
                         context,
                         CupertinoPageRoute(
-                            builder: (context) => DISC_quiz()));
+                            builder: (context) => DISC_quiz(questioncount: new Questioncount(0,0,0,0,0))));
                   },
                   textColor: Colors.white,
 //                padding: const EdgeInsets.all(0.0),
@@ -120,4 +123,14 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
+}
+
+class Questioncount {
+  final int questionindex;
+  final int one;
+  final int two;
+  final int three;
+  final int four;
+
+  Questioncount(this.questionindex,this.one,this.two,this.three,this.four);
 }

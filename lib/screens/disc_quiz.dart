@@ -1,45 +1,61 @@
 import 'dart:async';
 import 'dart:convert';
-
+import 'package:disc/screens/home.dart';
 import 'package:disc/services/model.dart';
 import 'package:disc/services/theme.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
-import 'package:outline_material_icons/outline_material_icons.dart';
 
-Future<Album>   fetchAlbum() async {
-  final response = await http.get('http://192.168.0.109:1337/QuestionDbs');
 
+Future<Album>   fetchAlbum(int i) async {
+  final response = await http.get('http://192.168.1.6:1337/QuestionDbs');
   //Linked with visahan.tk/animals
   // final response = await http.get('https://visahan.tk/animals.json');
   final jsonresponse = json.decode(response.body);
-
-  return Album.fromJson(jsonresponse[0]);
-
+  return Album.fromJson(jsonresponse[i]);
 }
 
-class DISC_quiz extends StatefulWidget {
-  DISC_quiz({Key key}) : super(key: key);
+class DISC_quiz extends StatelessWidget {
 
-  @override
-  DISC_quizstate createState() => DISC_quizstate();
-}
+  final Questioncount questioncount;
+  final Questioncount one;
+  final Questioncount two;
+  final Questioncount three;
+  final Questioncount four;
 
-class DISC_quizstate extends State<DISC_quiz> {
-  Future<Album> futureAlbum;
-
-  @override
-  void initState() {
-    super.initState();
-    futureAlbum = fetchAlbum();
+  DISC_quiz({Key key, @required this.questioncount, @required this.one, @required this.two, @required this.three, @required this.four}) : super(key: key){
+    // print(questioncount.questionindex);
   }
+  Future<Album> futureAlbum;
 
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
     ]);
+
+    //Declaration of variables
+    int question_index =questioncount.questionindex;
+    int one = questioncount.one;
+    int two =questioncount.two;
+    int three =questioncount.three;
+    int four =questioncount.four;
+
+    print(one);
+    print(two);
+    print(three);
+    print(four);
+    print("--------");
+
+
+    //Initialising the api
+    if(question_index<10) {
+      futureAlbum = fetchAlbum(question_index);
+    }
+    int tap=0;
+
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -98,13 +114,37 @@ class DISC_quizstate extends State<DISC_quiz> {
                       ),
                     )),
               ),
-              Container(height:150),
+              Container(height:120),
               FlatButton(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20.0),
                 ),
                 color: containerColor,
                 onPressed: () {
+                  if(question_index<10) {
+                    if(tap==0) {
+                      tap=1;
+                      one=one+4;
+                    }
+                    else {
+                      tap=0;
+                      one=one-2;
+                      question_index++;
+                      if(question_index==9) {
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (BuildContext context) => new MyHomePage()));
+                        return;
+                      }
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) => new DISC_quiz(
+                                  questioncount: new Questioncount(
+                                      question_index, one, two, three, four))));
+                    }
+                  }
                 },
                 textColor: Colors.white,
 //                padding: const EdgeInsets.all(0.0),
@@ -132,6 +172,30 @@ class DISC_quizstate extends State<DISC_quiz> {
                 ),
                 color: containerColor,
                 onPressed: () {
+                  if(question_index<10) {
+                    if(tap==0) {
+                      tap=1;
+                      two=two+4;
+                    }
+                    else {
+                      tap=0;
+                      two=two-2;
+                      question_index++;
+                      if(question_index==9) {
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (BuildContext context) => new MyHomePage()));
+                        return;
+                      }
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) => new DISC_quiz(
+                                  questioncount: new Questioncount(
+                                      question_index, one, two, three, four))));
+                    }
+                  }
                 },
                 textColor: Colors.white,
 //                padding: const EdgeInsets.all(0.0),
@@ -145,9 +209,7 @@ class DISC_quizstate extends State<DISC_quiz> {
                             style: TextStyle(fontSize: 20));
                       } else if (snapshot.hasError) {
                         return Text("${snapshot.error}");
-                      }
-
-                      // By default, show a loading spinner.
+                      }// By default, show a loading spinner.
                       return CircularProgressIndicator();
                     },
                   ),
@@ -160,6 +222,30 @@ class DISC_quizstate extends State<DISC_quiz> {
                 ),
                 color: containerColor,
                 onPressed: () {
+                  if(question_index<10) {
+                    if(tap==0) {
+                      tap=1;
+                      three=three+4;
+                    }
+                    else {
+                      tap=0;
+                      three=three-2;
+                      question_index++;
+                      if(question_index==9) {
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (BuildContext context) => new MyHomePage()));
+                        return;
+                      }
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) => new DISC_quiz(
+                                  questioncount: new Questioncount(
+                                      question_index, one, two, three, four))));
+                    }
+                  }
                 },
                 textColor: Colors.white,
 //                padding: const EdgeInsets.all(0.0),
@@ -174,8 +260,6 @@ class DISC_quizstate extends State<DISC_quiz> {
                       } else if (snapshot.hasError) {
                         return Text("${snapshot.error}");
                       }
-
-                      // By default, show a loading spinner.
                       return CircularProgressIndicator();
                     },
                   ),
@@ -188,6 +272,30 @@ class DISC_quizstate extends State<DISC_quiz> {
                 ),
                 color: containerColor,
                 onPressed: () {
+                  if(question_index<10) {
+                    if(tap==0) {
+                      tap=1;
+                      four=four+4;
+                    }
+                    else {
+                      tap=0;
+                      four=four-2; // futureAlbum = fetchAlbum(question_index);
+                      question_index++;
+                      if(question_index==9) {
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (BuildContext context) => new MyHomePage()));
+                        return;
+                      }
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) => new DISC_quiz(
+                                  questioncount: new Questioncount(
+                                      question_index, one, two, three, four))));
+                    }
+                  }
                 },
                 textColor: Colors.white,
 //                padding: const EdgeInsets.all(0.0),

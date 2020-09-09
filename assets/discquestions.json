@@ -1,0 +1,21 @@
+[
+  {
+    "id": 1,
+    "Question": "What sort of colour do u prefer?",
+    "Options": "black,blue,grey",
+    "created_by": {
+      "id": 1,
+      "firstname": "Visahan",
+      "lastname": "ashok",
+      "username": null
+    },
+    "updated_by": {
+      "id": 1,
+      "firstname": "Visahan",
+      "lastname": "ashok",
+      "username": null
+    },
+    "created_at": "2020-09-03T14:18:06.231Z",
+    "updated_at": "2020-09-04T06:37:40.769Z"
+  }
+]
