@@ -107,6 +107,7 @@ class DiscpropertiesState extends State<Discproperties> {
                 ),
                 color: Colors.green[700],
                 onPressed: () {
+                  Navigator.pop(context);
                   Navigator.push(context, new MaterialPageRoute(builder: (context) => new disctype(person: new Person(3))));
                 },
                 textColor: Colors.white,

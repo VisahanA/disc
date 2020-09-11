@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pie_chart/pie_chart.dart';
-
+import 'package:share/share.dart';
 import 'home.dart'; // import the package
 
 class discanalysis extends StatelessWidget {
@@ -24,11 +24,24 @@ class discanalysis extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    //Declaration of variables
     double one = ((questioncount.one).toDouble());
     double two =((questioncount.two).toDouble());
     double three =((questioncount.three).toDouble());
     double four =((questioncount.four).toDouble());
+    //Declaration of variables
+    if(questioncount.one<0){
+      one=0;
+    }
+    if(questioncount.two<0){
+      two=0;
+    }
+    if(questioncount.three<0){
+      three=0;
+    }
+    if(questioncount.four<0){
+      four=0;
+    }
+
 
 
     data.addAll({
@@ -105,6 +118,25 @@ class discanalysis extends StatelessWidget {
                 padding: const EdgeInsets.all(10.0),
                 child: const Text(
                     'Go to Main page',
+                    style: TextStyle(fontSize: 18)
+                ),
+              ),
+            ),
+            Container(height:20),
+            FlatButton(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20.0),
+              ),
+              color: Colors.blueAccent[700],
+              onPressed: () {
+                Share.share('You are an Introvert');
+              },
+              textColor: Colors.white,
+//                padding: const EdgeInsets.all(0.0),
+              child: Container(
+                padding: const EdgeInsets.all(10.0),
+                child: const Text(
+                    'Share DISC results',
                     style: TextStyle(fontSize: 18)
                 ),
               ),

@@ -12,7 +12,7 @@ import 'discanalysis.dart';
 
 
 Future<Album>   fetchAlbum(int i) async {
-  final response = await http.get('http://192.168.1.6:1337/QuestionDbs');
+  final response = await http.get('http://192.168.68.103:1337/QuestionDbs');
   //Linked with visahan.tk/animals
   // final response = await http.get('https://visahan.tk/animals.json');
   final jsonresponse = json.decode(response.body);
@@ -141,7 +141,7 @@ class DISC_quiz extends StatelessWidget {
                                     questioncount: new Questioncount(
                                         question_index, one, two, three, four))));
                         return;
-                         }
+                      }
                       Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
@@ -337,6 +337,4 @@ class DISC_quiz extends StatelessWidget {
       ),
     );
   }
-
-
 }
