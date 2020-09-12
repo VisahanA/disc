@@ -68,6 +68,11 @@ class DISC_quizstate extends State<DISC_quiz>{
       futureAlbum = fetchAlbum(question_index);
     }
 
+    bool pressAttention=false;
+    bool firstoption=false;
+    bool secondoption=false;
+    bool thirdoption=false;
+    bool fourthoption=false;
 
     int tap=0;
 
@@ -130,7 +135,7 @@ class DISC_quizstate extends State<DISC_quiz>{
                     )),
               ),
               Container(height:120),
-              FlatButton(
+              RaisedButton(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20.0),
                 ),
@@ -138,10 +143,14 @@ class DISC_quizstate extends State<DISC_quiz>{
                 onPressed: () {
                   if(question_index<10) {
                     if(tap==0) {
+                      firstoption=true;
                       tap=1;
                       one=one+4;
                     }
                     else {
+                      if(firstoption==true) {
+                        return;
+                      }
                       tap=0;
                       one=one-2;
                       question_index++;
@@ -183,7 +192,7 @@ class DISC_quizstate extends State<DISC_quiz>{
                 ),
               ),
               Container(height:30),
-              FlatButton(
+              RaisedButton(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20.0),
                 ),
@@ -191,10 +200,14 @@ class DISC_quizstate extends State<DISC_quiz>{
                 onPressed: () {
                   if(question_index<10) {
                     if(tap==0) {
+                      secondoption=true;
                       tap=1;
                       two=two+4;
                     }
                     else {
+                      if(secondoption==true) {
+                        return;
+                      }
                       tap=0;
                       two=two-2;
                       question_index++;
@@ -243,10 +256,14 @@ class DISC_quizstate extends State<DISC_quiz>{
                 onPressed: () {
                   if(question_index<10) {
                     if(tap==0) {
+                      thirdoption=true;
                       tap=1;
                       three=three+4;
                     }
                     else {
+                      if(thirdoption==true) {
+                        return;
+                      }
                       tap=0;
                       three=three-2;
                       question_index++;
@@ -287,7 +304,7 @@ class DISC_quizstate extends State<DISC_quiz>{
                 ),
               ),
               Container(height: 30),
-              FlatButton(
+              RaisedButton(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20.0),
                 ),
@@ -295,12 +312,16 @@ class DISC_quizstate extends State<DISC_quiz>{
                 onPressed: () {
                   if(question_index<10) {
                     if(tap==0) {
+                      fourthoption=true;
                       tap=1;
                       four=four+4;
                     }
                     else {
+                      if(fourthoption==true) {
+                        return;
+                      }
                       tap=0;
-                      four=four-2; // futureAlbum = fetchAlbum(question_index);
+                      four=four-2;
                       question_index++;
                       if (question_index==10) {
                         Navigator.push(
