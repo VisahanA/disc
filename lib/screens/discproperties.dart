@@ -4,8 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/services.dart';
-import 'package:outline_material_icons/outline_material_icons.dart';
-import 'package:toast/toast.dart';
+
 
 
 class Discproperties extends StatefulWidget {
@@ -27,8 +26,7 @@ class DiscpropertiesState extends State<Discproperties> {
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
     ]);
-    return MaterialApp(
-    home: Scaffold(
+    return Scaffold(
       appBar: AppBar(
         title: const Text('DISC PROPERTIES'),
         backgroundColor: Colors.deepPurple,
@@ -145,7 +143,7 @@ class DiscpropertiesState extends State<Discproperties> {
           padding: EdgeInsets.only(left: 15, right: 15),
         ),
       ),
-    ));
+    );
   }
 
 }
@@ -154,4 +152,15 @@ class Person {
   final int value;
 
   Person(this.value);
+}
+
+//Temp for testing and developement purpose
+class Questioncount {
+  final int questionindex;
+  final int one;
+  final int two;
+  final int three;
+  final int four;
+
+  Questioncount(this.questionindex,this.one,this.two,this.three,this.four);
 }

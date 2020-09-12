@@ -1,6 +1,6 @@
-import 'package:disc/screens/disc_quiz.dart';
-import 'package:disc/screens/discanalysis.dart';
 import 'package:disc/screens/discproperties.dart';
+import 'package:disc/screens/rulebookdisc.dart';
+import 'package:disc/screens/settings.dart';
 import 'package:disc/services/theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -51,7 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       Navigator.push(
                           context,
                           CupertinoPageRoute(
-                              builder: (context) =>  discanalysis(questioncount: new Questioncount(0,0,0,0,0))));
+                              builder: (context) =>  settings()));
                     },
                     child: AnimatedContainer(
                       duration: Duration(milliseconds: 200),
@@ -80,7 +80,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     Navigator.push(
                         context,
                         CupertinoPageRoute(
-                            builder: (context) => DISC_quiz(questioncount: new Questioncount(0,0,0,0,0))));
+                            builder: (context) => rulebook()));
                   },
                   textColor: Colors.white,
 //                padding: const EdgeInsets.all(0.0),
@@ -122,14 +122,4 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
-}
-
-class Questioncount {
-  final int questionindex;
-  final int one;
-  final int two;
-  final int three;
-  final int four;
-
-  Questioncount(this.questionindex,this.one,this.two,this.three,this.four);
 }

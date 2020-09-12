@@ -1,15 +1,13 @@
 import 'dart:async';
 import 'dart:convert';
-import 'package:disc/screens/home.dart';
+import 'package:disc/screens/rulebookdisc.dart';
 import 'package:disc/services/model.dart';
 import 'package:disc/services/theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
-
 import 'discanalysis.dart';
-
 
 Future<Album>   fetchAlbum(int i) async {
   final response = await http.get('http://192.168.68.103:1337/QuestionDbs');
@@ -18,24 +16,38 @@ Future<Album>   fetchAlbum(int i) async {
   final jsonresponse = json.decode(response.body);
   return Album.fromJson(jsonresponse[i]);
 }
-
-class DISC_quiz extends StatelessWidget {
+class DISC_quiz extends StatefulWidget {
   final Questioncount questioncount;
   final Questioncount one;
   final Questioncount two;
   final Questioncount three;
   final Questioncount four;
 
-  DISC_quiz({Key key, @required this.questioncount, @required this.one, @required this.two, @required this.three, @required this.four}) : super(key: key){
-    // print(questioncount.questionindex);
-  }
+
+  DISC_quiz({Key key, @required this.questioncount, @required this.one, @required this.two, @required this.three, @required this.four}) : super(key: key);
+
+  @override
+  DISC_quizstate createState() => DISC_quizstate(this.questioncount,this.one,this.two,this.three,this.four);
+
+}
   Future<Album> futureAlbum;
+
+class DISC_quizstate extends State<DISC_quiz>{
+
+  final Questioncount questioncount;
+  final Questioncount one;
+  final Questioncount two;
+  final Questioncount three;
+  final Questioncount four;
+
+  DISC_quizstate(this.questioncount, this.one, this.two, this.three, this.four);
 
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
     ]);
+
 
     //Declaration of variables
     int question_index =questioncount.questionindex;
@@ -63,10 +75,10 @@ class DISC_quiz extends StatelessWidget {
       body: Container(
         decoration: BoxDecoration(
             gradient: LinearGradient(
-                begin:Alignment.topCenter,
-                end:Alignment.bottomCenter,
-                stops: [0.6, 1],
-                colors: [Colors.white,Colors.pinkAccent[100]])
+                begin:Alignment.topLeft,
+                end:Alignment.bottomRight,
+                stops: [0.4, 1],
+                colors: [Colors.white,Colors.pink[400]])
         ),
         child: AnimatedContainer(
           duration: Duration(milliseconds: 200),

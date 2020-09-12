@@ -1,18 +1,37 @@
+import 'package:disc/screens/rulebookdisc.dart';
 import 'package:flutter/material.dart';
 import 'package:pie_chart/pie_chart.dart';
 import 'package:share/share.dart';
 import 'home.dart'; // import the package
+import 'dart:math';
+import 'package:confetti/confetti.dart';
 
-class discanalysis extends StatelessWidget {
+class discanalysis extends StatefulWidget {
   final Questioncount questioncount;
   final Questioncount one;
   final Questioncount two;
   final Questioncount three;
   final Questioncount four;
 
-  discanalysis({Key key, @required this.questioncount, @required this.one, @required this.two, @required this.three, @required this.four}) : super(key: key);
+  discanalysis(
+      {Key key, @required this.questioncount, @required this.one, @required this.two, @required this.three, @required this.four})
+      : super(key: key);
+
+  @override
+  discanalysisstate createState() => discanalysisstate(this.questioncount,this.one,this.two,this.three,this.four);
+}
+
+class discanalysisstate extends State<discanalysis>{
+  final Questioncount questioncount;
+  final Questioncount one;
+  final Questioncount two;
+  final Questioncount three;
+  final Questioncount four;
+
+
   Map<String, double> data = new Map();
-  bool _loadChart = false;
+
+bool _loadChart = false;
 
   List<Color> _colors = [
     Colors.redAccent[700],
@@ -21,9 +40,42 @@ class discanalysis extends StatelessWidget {
     Colors.blueAccent[700],
   ];
 
+  ConfettiController _controllerCenter;
+  ConfettiController _controllerCenterRight;
+  ConfettiController _controllerCenterLeft;
+  ConfettiController _controllerTopCenter;
+  ConfettiController _controllerBottomCenter;
+
+  @override
+  void initState() {
+    _controllerCenter =
+        ConfettiController(duration: const Duration(seconds: 10));
+    _controllerCenterRight =
+        ConfettiController(duration: const Duration(seconds: 10));
+    _controllerCenterLeft =
+        ConfettiController(duration: const Duration(seconds: 10));
+    _controllerTopCenter =
+        ConfettiController(duration: const Duration(seconds: 10));
+    _controllerBottomCenter =
+        ConfettiController(duration: const Duration(seconds: 10));
+    super.initState();
+    _controllerCenter.play();
+  }
+
+  @override
+  void dispose() {
+    _controllerCenter.dispose();
+    _controllerCenterRight.dispose();
+    _controllerCenterLeft.dispose();
+    _controllerTopCenter.dispose();
+    _controllerBottomCenter.dispose();
+    super.dispose();
+  }
+
+  discanalysisstate(this.questioncount, this.one, this.two, this.three, this.four);
+
   @override
   Widget build(BuildContext context) {
-
     double one = ((questioncount.one).toDouble());
     double two =((questioncount.two).toDouble());
     double three =((questioncount.three).toDouble());
@@ -42,16 +94,16 @@ class discanalysis extends StatelessWidget {
       four=0;
     }
 
-
-
     data.addAll({
       'Dominance': one,
       'Influence': two,
       'Steadiness': three,
       'Conscientiousness': four
     });
+
     _loadChart = true;
-    return Scaffold(
+    return MaterialApp(
+      home:  Scaffold(
       appBar: AppBar(
         title: Text("DiscAnalysis"),
         backgroundColor: Colors.deepPurple,
@@ -59,13 +111,30 @@ class discanalysis extends StatelessWidget {
       body: Container(
         decoration: BoxDecoration(
             gradient: LinearGradient(
-                begin:Alignment.topCenter,
-                end:Alignment.bottomCenter,
-                stops: [0.6, 1],
-                colors: [Colors.white,Colors.pinkAccent[100]])
+                begin:Alignment.topLeft,
+                end:Alignment.bottomRight,
+                stops: [0.4, 1],
+                colors: [Colors.white,Colors.pink[400]])
         ),
         child: Column(
           children: <Widget>[
+            Align(
+              alignment: Alignment.center,
+              child: ConfettiWidget(
+                confettiController: _controllerCenter,
+                blastDirectionality: BlastDirectionality
+                    .explosive, // don't specify a direction, blast randomly
+                shouldLoop:
+                true, // start again as soon as the animation is finished
+                colors: const [
+                  Colors.green,
+                  Colors.blue,
+                  Colors.pink,
+                  Colors.orange,
+                  Colors.purple
+                ], // manually specify the colors to be used
+              ),
+            ),
             SizedBox(
               height: 100,
             ),
@@ -144,6 +213,6 @@ class discanalysis extends StatelessWidget {
           ],
         ),
       ),
-    );
+    ));
   }
 }
