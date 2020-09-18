@@ -10,10 +10,11 @@ import 'package:http/http.dart' as http;
 import 'discanalysis.dart';
 
 Future<Album>   fetchAlbum(int i) async {
-  final response = await http.get('http://192.168.68.103:1337/QuestionDbs');
+  // final response = await http.get('https://127.0.0.1:5000/disc.json');
   //Linked with visahan.tk/animals
-  // final response = await http.get('https://visahan.tk/animals.json');
+  final response = await http.get('https://visahan.tk/animals.json');
   final jsonresponse = json.decode(response.body);
+  print(jsonresponse[i]['Question']);
   return Album.fromJson(jsonresponse[i]);
 }
 class DISC_quiz extends StatefulWidget {
@@ -31,9 +32,11 @@ class DISC_quiz extends StatefulWidget {
 
 }
   Future<Album> futureAlbum;
+  bool pressAttention=true;
 
 class DISC_quizstate extends State<DISC_quiz>{
 
+  bool pressAttention=true;
   final Questioncount questioncount;
   final Questioncount one;
   final Questioncount two;
@@ -68,7 +71,7 @@ class DISC_quizstate extends State<DISC_quiz>{
       futureAlbum = fetchAlbum(question_index);
     }
 
-    bool pressAttention=false;
+
     bool firstoption=false;
     bool secondoption=false;
     bool thirdoption=false;
@@ -139,13 +142,16 @@ class DISC_quizstate extends State<DISC_quiz>{
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20.0),
                 ),
-                color: containerColor,
+                color: pressAttention ? Colors.blueAccent[700] : Colors.green[700],
                 onPressed: () {
                   if(question_index<10) {
                     if(tap==0) {
                       firstoption=true;
                       tap=1;
                       one=one+4;
+                      // setState((){
+                      //   pressAttention = !pressAttention;
+                      // });
                     }
                     else {
                       if(firstoption==true) {

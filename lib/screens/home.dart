@@ -1,5 +1,6 @@
 import 'package:disc/screens/discproperties.dart';
 import 'package:disc/screens/rulebookdisc.dart';
+import 'package:disc/screens/jsonstorage.dart';
 import 'package:disc/screens/settings.dart';
 import 'package:disc/services/theme.dart';
 import 'package:flutter/cupertino.dart';
@@ -7,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/services.dart';
 import 'package:outline_material_icons/outline_material_icons.dart';
+import 'package:stagehand/stagehand.dart';
 
 
 class MyHomePage extends StatefulWidget {
@@ -64,7 +66,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ],
               ),
-//              Container(height: 40),
               Image.asset(
                   'assets/disc_menu.png',
                   height: 300,

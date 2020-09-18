@@ -1,12 +1,9 @@
 import 'package:disc/screens/disc_quiz.dart';
-import 'package:disc/screens/discanalysis.dart';
-import 'package:disc/screens/discproperties.dart';
 import 'package:disc/services/theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/services.dart';
-import 'package:outline_material_icons/outline_material_icons.dart';
 
 
 class rulebook extends StatefulWidget {
