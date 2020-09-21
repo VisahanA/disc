@@ -54,12 +54,8 @@ class disctype extends StatelessWidget {
                 ),
                 RichText(
                   text: TextSpan(
-                    text: 'domination.txt',
+                    text: '1)	Give brief details only.\n 2)	Avoid telling too much of generalizations.\n 3)	Never repeat the same things over again \n4)	Focus on solutions rather than problem. \n5)	Best way to present content is using bulletin points. \n 6)	Use superlative words.Beware of the “what” questions D’s will throw on you!!',
                     style: DefaultTextStyle.of(context).style,
-                    children: <TextSpan>[
-                      TextSpan(text: 'bold', style: TextStyle(fontWeight: FontWeight.bold)),
-                      TextSpan(text: ' world!'),
-                    ],
                   ),
                 )
 //              Container(height: 40),

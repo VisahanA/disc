@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:disc/screens/rulebookdisc.dart';
 import 'package:flutter/material.dart';
+import 'package:outline_material_icons/outline_material_icons.dart';
 import 'package:pie_chart/pie_chart.dart';
 import 'package:share/share.dart';
 import 'home.dart'; // import the package
@@ -62,6 +65,7 @@ bool _loadChart = false;
         ConfettiController(duration: const Duration(seconds: 10));
     super.initState();
     _controllerCenter.play();
+
   }
 
   @override
@@ -72,6 +76,7 @@ bool _loadChart = false;
     _controllerTopCenter.dispose();
     _controllerBottomCenter.dispose();
     super.dispose();
+
   }
 
   discanalysisstate(this.questioncount, this.one, this.two, this.three, this.four);
@@ -102,8 +107,6 @@ bool _loadChart = false;
       'Steadiness': three,
       'Conscientiousness': four
     });
-
-
     double largest= (one>two)?(one>three)?(one>four)?one:four:(three>four)?three:four:(two>three)?(two>four)?two:four:(three>four)?three:four;
     String val="";
     if(largest==one) {
@@ -121,10 +124,21 @@ bool _loadChart = false;
     _loadChart = true;
     return MaterialApp(
       home:  Scaffold(
-      appBar: AppBar(
-        title: Text("DiscAnalysis"),
-        backgroundColor: Colors.deepPurple,
-      ),
+        appBar: AppBar(
+          title: Text("Disc analysis"),
+          actions: <Widget>[
+            FlatButton(
+              textColor: Colors.white,
+              onPressed: () {
+                sharecontent(one,two,three,four);
+              },
+              child: Icon(
+                OMIcons.share,
+              ),
+              shape: CircleBorder(side: BorderSide(color: Colors.transparent)), 
+            ),
+          ],
+        ),
       body: Container(
         decoration: BoxDecoration(
             gradient: LinearGradient(
@@ -188,24 +202,6 @@ bool _loadChart = false;
                 maxLines: 20,
                 softWrap: true,
                 style: TextStyle(fontSize:20),
-              ),
-              FlatButton(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20.0),
-                ),
-                color: Colors.blueAccent[700],
-                onPressed: () {
-                  sharecontent(one,two,three,four);
-                },
-                textColor: Colors.white,
-  //                padding: const EdgeInsets.all(0.0),
-                child: Container(
-                  padding: const EdgeInsets.all(10.0),
-                  child: const Text(
-                      'Share DISC results',
-                      style: TextStyle(fontSize: 18)
-                  ),
-                ),
               ),
             ],
           ),

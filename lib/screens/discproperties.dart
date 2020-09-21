@@ -13,14 +13,20 @@ class Discproperties extends StatefulWidget {
       : super(key: key) {
     this.changeTheme = changeTheme;
   }
-
   final String title;
-
   @override
   DiscpropertiesState createState() => DiscpropertiesState();
 }
 
 class DiscpropertiesState extends State<Discproperties> {
+
+  @override
+  void initState() {
+    print("value");
+    super.initState();
+    // openalertbox();
+  }
+
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([
@@ -28,7 +34,7 @@ class DiscpropertiesState extends State<Discproperties> {
     ]);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('DISC PROPERTIES'),
+        title: const Text('Tips to follow  '),
         backgroundColor: Colors.deepPurple,
       ),
       body: Center(
@@ -67,7 +73,32 @@ class DiscpropertiesState extends State<Discproperties> {
                 ),
                 color: Colors.red[700],
                 onPressed: () {
-                  Navigator.push(context, new MaterialPageRoute(builder: (context) => new disctype(person: new Person(1))));
+                  // Navigator.push(context, new MaterialPageRoute(builder: (context) => new disctype(person: new Person(1))));
+                  return showDialog(
+                    context: context,
+                    barrierDismissible: false, // user must tap button!
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: Text('Domination'),
+                        content: SingleChildScrollView(
+                          child: ListBody(
+                            children: <Widget>[
+                              Text('1)	Give brief details only.\n 2)	Avoid telling too much of generalizations.\n 3)	Never repeat the same things over again \n4)	Focus on solutions rather than problem. \n5)	Best way to present content is using bulletin points. \n 6)	Use superlative words.Beware of the “what” questions D’s will throw on you!! \n\n D + D = Have lot of arguments, but still stay loyal. ',
+                              style: TextStyle(fontSize: 20)),
+                            ],
+                          ),
+                        ),
+                        actions: <Widget>[
+                          FlatButton(
+                            child: Text('Ok'),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                          ),
+                        ],
+                      );
+                    },
+                  );
                 },
                 textColor: Colors.white,
 //                padding: const EdgeInsets.all(0.0),
@@ -84,9 +115,34 @@ class DiscpropertiesState extends State<Discproperties> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20.0),
                 ),
-                color: Colors.yellow[600],
+                color: Colors.yellow[700],
                 onPressed: () {
-                  Navigator.push(context, new MaterialPageRoute(builder: (context) => new disctype(person: new Person(2))));
+                  // Navigator.push(context, new MaterialPageRoute(builder: (context) => new disctype(person: new Person(2))));
+                  return showDialog(
+                    context: context,
+                    barrierDismissible: false, // user must tap button!
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: Text('Influence'),
+                        content: SingleChildScrollView(
+                          child: ListBody(
+                            children: <Widget>[
+                              Text('1)	Allow them to talk first, else they will not listen to yours.\n 2)	Allow them to ask question in the middle of a conversation. \n 3)	Focus only on the positives. \n4)	Try telling stories.\nBeware of the “who” questions I’s will throw on you!! \n\n I + I = Partying and having fun all the time.',
+                                  style: TextStyle(fontSize: 20))
+                            ],
+                          ),
+                        ),
+                        actions: <Widget>[
+                          FlatButton(
+                            child: Text('Ok'),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                          ),
+                        ],
+                      );
+                    },
+                  );
                 },
                 textColor: Colors.white,
 //                padding: const EdgeInsets.all(0.0),
@@ -99,14 +155,39 @@ class DiscpropertiesState extends State<Discproperties> {
                 ),
               ),
               Container(height:40),
+
               FlatButton(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20.0),
                 ),
                 color: Colors.green[700],
                 onPressed: () {
-                  Navigator.pop(context);
-                  Navigator.push(context, new MaterialPageRoute(builder: (context) => new disctype(person: new Person(3))));
+                  // Navigator.push(context, new MaterialPageRoute(builder: (context) => new disctype(person: new Person(3))));
+                  return showDialog<void>(
+                    context: context,
+                    barrierDismissible: false, // user must tap button!
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: Text('Steadiness'),
+                        content: SingleChildScrollView(
+                          child: ListBody(
+                            children: <Widget>[
+                              Text('1) Give more personal details.\n2)Make them comfortable before you start the conversation.\n3) Express lot of interest towards them.\n4)	Never be rude.Beware of the “how” questions S’s will throw on you!! \n\n  S + S = Quiet and peaceful.',
+                               style: TextStyle(fontSize: 20)),
+                            ],
+                          ),
+                        ),
+                        actions: <Widget>[
+                          FlatButton(
+                            child: Text('Ok'),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                          ),
+                        ],
+                      );
+                    },
+                  );
                 },
                 textColor: Colors.white,
 //                padding: const EdgeInsets.all(0.0),
@@ -125,7 +206,32 @@ class DiscpropertiesState extends State<Discproperties> {
                 ),
                 color: Colors.blue[700],
                 onPressed: () {
-                  Navigator.push(context, new MaterialPageRoute(builder: (context) => new disctype(person: new Person(4))));
+                  // Navigator.push(context, new MaterialPageRoute(builder: (context) => new disctype(person: new Person(4))));
+                  return showDialog<void>(
+                    context: context,
+                    barrierDismissible: false, // user must tap button!
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: Text('Conscientiousness'),
+                        content: SingleChildScrollView(
+                          child: ListBody(
+                            children: <Widget>[
+                              Text('1)	Focus on facts and details.\n2)	Be 100% sure of what you talk.\n3)	Don’t show too much of emotion.\n4)	Be patient.\nBeware of the “why” questions C’s will throw on you!! \n\n C + C = very calculative on things they do.',
+                                  style: TextStyle(fontSize: 20)),
+                            ],
+                          ),
+                        ),
+                        actions: <Widget>[
+                          FlatButton(
+                            child: Text('Ok'),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                          ),
+                        ],
+                      );
+                    },
+                  );
                 },
                 textColor: Colors.white,
 //                padding: const EdgeInsets.all(0.0),
@@ -146,6 +252,33 @@ class DiscpropertiesState extends State<Discproperties> {
     );
   }
 
+  void openalertbox() {
+      showDialog(
+        context: context,
+        barrierDismissible: false, // user must tap button!
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('AlertDialog Title'),
+            content: SingleChildScrollView(
+              child: ListBody(
+                children: <Widget>[
+                  Text('This is a demo alert dialog.'),
+                  Text('Would you like to approve of this message?'),
+                ],
+              ),
+            ),
+            actions: <Widget>[
+              FlatButton(
+                child: Text('Approve'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        },
+      );
+    }
 }
 
 class Person {

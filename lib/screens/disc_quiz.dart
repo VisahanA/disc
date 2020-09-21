@@ -14,8 +14,13 @@ Future<Album>   fetchAlbum(int i) async {
   //Linked with visahan.tk/animals
   final response = await http.get('https://visahan.tk/animals.json');
   final jsonresponse = json.decode(response.body);
-  print(jsonresponse[i]['Question']);
-  return Album.fromJson(jsonresponse[i]);
+  if (response.statusCode == 200) {
+    print(jsonresponse[i]['Question']);
+    return Album.fromJson(jsonresponse[i]);
+  }
+  else {
+    throw Exception('Failed to fetch api');
+  }
 }
 class DISC_quiz extends StatefulWidget {
   final Questioncount questioncount;

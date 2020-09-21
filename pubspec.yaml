@@ -29,9 +29,8 @@ dependencies:
   share: ^0.6.1+1
   link: ^1.1.0
   confetti: ^0.5.4+1
-  build_runner: ^1.6.2
-  build_web_compilers: ^2.0.0
   stagehand: ^3.3.9
+  flutter_launcher_icons: ^0.8.0
 
 
   # The following adds the Cupertino Icons font to your application.

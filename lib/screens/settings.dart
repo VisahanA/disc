@@ -1,189 +1,242 @@
-import 'dart:math';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
-import 'package:flutter/services.dart';
-import 'package:confetti/confetti.dart';
+import 'package:flutter/widgets.dart';
+import 'package:outline_material_icons/outline_material_icons.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:link/link.dart';
 
-
-class settings extends StatefulWidget {
+class SettingsPage extends StatefulWidget {
   Function(Brightness brightness) changeTheme;
-  settings({Key key, this.title})
+  SettingsPage({Key key, Function(Brightness brightness) changeTheme})
       : super(key: key) {
     this.changeTheme = changeTheme;
   }
-
-  final String title;
-
   @override
-  settingsstate createState() => settingsstate();
+  _SettingsPageState createState() => _SettingsPageState();
 }
 
-class settingsstate extends State<settings> {
-  @override
-  ConfettiController _controllerCenter;
-  ConfettiController _controllerCenterRight;
-  ConfettiController _controllerCenterLeft;
-  ConfettiController _controllerTopCenter;
-  ConfettiController _controllerBottomCenter;
-
-  @override
-  void initState() {
-    _controllerCenter =
-        ConfettiController(duration: const Duration(seconds: 10));
-    _controllerCenterRight =
-        ConfettiController(duration: const Duration(seconds: 10));
-    _controllerCenterLeft =
-        ConfettiController(duration: const Duration(seconds: 10));
-    _controllerTopCenter =
-        ConfettiController(duration: const Duration(seconds: 10));
-    _controllerBottomCenter =
-        ConfettiController(duration: const Duration(seconds: 10));
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    _controllerCenter.dispose();
-    _controllerCenterRight.dispose();
-    _controllerCenterLeft.dispose();
-    _controllerTopCenter.dispose();
-    _controllerBottomCenter.dispose();
-    super.dispose();
-  }
+class _SettingsPageState extends State<SettingsPage> {
+  String selectedTheme;
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: <Widget>[
-        //CENTER -- Blast
-        Align(
-          alignment: Alignment.center,
-          child: ConfettiWidget(
-            confettiController: _controllerCenter,
-            blastDirectionality: BlastDirectionality
-                .explosive, // don't specify a direction, blast randomly
-            shouldLoop:
-            true, // start again as soon as the animation is finished
-            colors: const [
-              Colors.green,
-              Colors.blue,
-              Colors.pink,
-              Colors.orange,
-              Colors.purple
-            ], // manually specify the colors to be used
-          ),
-        ),
-        Align(
-          alignment: Alignment.center,
-          child: FlatButton(
-              onPressed: () {
-                _controllerCenter.play();
-              },
-              child: _display('blast')),
-        ),
+    return Scaffold(
+      body: ListView(
+        physics: BouncingScrollPhysics(),
+        children: <Widget>[
+          Container(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  GestureDetector(
+                    behavior: HitTestBehavior.opaque,
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Container(
+                        padding:
+                        const EdgeInsets.only(top: 24, left: 24, right: 24),
+                        child: Icon(OMIcons.arrowBack)),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 16, top: 36, right: 24),
+                    child: buildHeaderWidget(context),
+                  ),
+//Privacy Notes & Licensing
+                  buildCardWidget(Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text('Copyrights',
+                          style: TextStyle(
+                              fontFamily: 'ZillaSlab',
+                              fontSize: 18,
+                              color: Colors.white)),
+                      Container(
+                        height: 20,
+                      ),
+                      Row(
+                        children: <Widget>[
+                          Link(
+                            child: Text(
+                                'Privacy Policy',
+                                style: TextStyle(
+                                  fontFamily: 'ZillaSlab',
+                                  fontSize: 18,
+                                  color: Colors.white,
+                                )),
+                            url: 'https://visahan.tk/jotpadprivacypolicy.html',
+                          ),
+                        ],
+                      ),
+                      Container(
+                        height: 20,
+                      ),
+                      Row(
+                        children: <Widget>[
+                          Link(
+                            child: Text(
+                                'Terms & Condition',
+                                style: TextStyle(
+                                  fontFamily: 'ZillaSlab',
+                                  fontSize: 18,
+                                  color: Colors.white,
+                                )),
+                            url: 'https://visahan.tk/termsandcondition.html',
+                          ),
+                        ],
+                      ),
+                    ],
+                  )),
 
-        //CENTER RIGHT -- Emit left
-        Align(
-          alignment: Alignment.centerRight,
-          child: ConfettiWidget(
-            confettiController: _controllerCenterRight,
-            blastDirection: pi, // radial value - LEFT
-            particleDrag: 0.05, // apply drag to the confetti
-            emissionFrequency: 0.05, // how often it should emit
-            numberOfParticles: 20, // number of particles to emit
-            gravity: 0.05, // gravity - or fall speed
-            shouldLoop: false,
-            colors: const [
-              Colors.green,
-              Colors.blue,
-              Colors.pink
-            ], // manually specify the colors to be used
-          ),
-        ),
-        Align(
-          alignment: Alignment.centerRight,
-          child: FlatButton(
-              onPressed: () {
-                _controllerCenterRight.play();
-              },
-              child: _display('pump left')),
-        ),
 
-        //CENTER LEFT - Emit right
-        Align(
-          alignment: Alignment.centerLeft,
-          child: ConfettiWidget(
-            confettiController: _controllerCenterLeft,
-            blastDirection: 0, // radial value - RIGHT
-            emissionFrequency: 0.6,
-            minimumSize: const Size(10,
-                10), // set the minimum potential size for the confetti (width, height)
-            maximumSize: const Size(50,
-                50), // set the maximum potential size for the confetti (width, height)
-            numberOfParticles: 1,
-            gravity: 0.1,
-          ),
-        ),
-        Align(
-          alignment: Alignment.centerLeft,
-          child: FlatButton(
-              onPressed: () {
-                _controllerCenterLeft.play();
-              },
-              child: _display('singles')),
-        ),
-
-        //TOP CENTER - shoot down
-        Align(
-          alignment: Alignment.topCenter,
-          child: ConfettiWidget(
-            confettiController: _controllerTopCenter,
-            blastDirection: pi / 2,
-            maxBlastForce: 5, // set a lower max blast force
-            minBlastForce: 2, // set a lower min blast force
-            emissionFrequency: 0.05,
-            numberOfParticles: 50, // a lot of particles at once
-            gravity: 1,
-          ),
-        ),
-        Align(
-          alignment: Alignment.topCenter,
-          child: FlatButton(
-              onPressed: () {
-                _controllerTopCenter.play();
-              },
-              child: _display('goliath')),
-        ),
-        //BOTTOM CENTER
-        Align(
-          alignment: Alignment.bottomCenter,
-          child: ConfettiWidget(
-            confettiController: _controllerBottomCenter,
-            blastDirection: -pi / 2,
-            emissionFrequency: 0.01,
-            numberOfParticles: 20,
-            maxBlastForce: 100,
-            minBlastForce: 80,
-            gravity: 0.3,
-          ),
-        ),
-        Align(
-          alignment: Alignment.bottomCenter,
-          child: FlatButton(
-              onPressed: () {
-                _controllerBottomCenter.play();
-              },
-              child: _display('hard and infrequent')),
-        ),
-      ],
+                  buildCardWidget(Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: <Widget>[
+                      Text('About App',
+                          style: TextStyle(
+                              fontFamily: 'ZillaSlab',
+                              fontSize: 18,
+                              color: Colors.white)),
+                      Container(
+                        height: 20,
+                      ),
+                      Center(
+                        child: Text('Developed by'.toUpperCase(),
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w500,
+                                letterSpacing: 1)),
+                      ),
+                      Center(
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 8.0, bottom: 4.0),
+                            child: Text(
+                              'Visahan',
+                              style: TextStyle(fontFamily: 'ZillaSlab', fontSize: 24,color: Colors.white),
+                            ),
+                          )),
+                      Container(
+                        alignment: Alignment.center,
+                        child: OutlineButton.icon(
+                          icon: Icon(OMIcons.link),
+                          label: Text('GITHUB',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w500,
+                                  letterSpacing: 1,
+                                  color: Colors.white)),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(16)),
+                          onPressed: openGitHub,
+                        ),
+                      ),
+                    ],
+                  ))
+                ],
+              ))
+        ],
+      ),
     );
   }
 
-  Text _display(String text) {
-    return Text(
-      text,
-      style: const TextStyle(color: Colors.white, fontSize: 20),
+  Widget buildCardWidget(Widget child) {
+    return Container(
+      decoration: BoxDecoration(
+          color: Colors.blueAccent[700],
+          borderRadius: BorderRadius.circular(16),
+          boxShadow: [
+            BoxShadow(
+                offset: Offset(0, 8),
+                color: Colors.white,
+                blurRadius: 16)
+          ]),
+      margin: EdgeInsets.all(24),
+      padding: EdgeInsets.all(16),
+      child: child,
     );
   }
+
+  Widget buildHeaderWidget(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.only(top: 8, bottom: 16, left: 8),
+      child: Text(
+        'Settings',
+        style: TextStyle(
+            fontFamily: 'ZillaSlab',
+            fontWeight: FontWeight.w700,
+            fontSize: 28,
+            color: Theme.of(context).primaryColor),
+      ),
+    );
+  }
+
+  void handleThemeSelection(String value) {
+    setState(() {
+      selectedTheme = value;
+    });
+    if (value == 'light') {
+      widget.changeTheme(Brightness.light);
+    } else {
+      widget.changeTheme(Brightness.dark);
+    }
+  }
+
+  void openGitHub() {
+    launch('https://www.github.com/VisahanA');
+  }
+
+  final password = TextEditingController();
+
+  void setpassword(){
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+            title: Text('Set Master Pin'),
+            contentPadding: const EdgeInsets.all(16.0),
+            content: new Row(
+              children: <Widget>[
+                new Expanded(
+                  child: new TextField(
+                    autofocus: true,
+                    controller: password,
+                    textInputAction: TextInputAction.go,
+                    keyboardType: TextInputType.numberWithOptions(),
+                    decoration: new InputDecoration(
+                        labelText: 'Pin', hintText: 'Enter Pin'),
+                    obscureText:true ,
+                  ),
+                )
+              ],
+            ),
+            actions: <Widget>[
+              FlatButton(
+                child: Text('Save',
+                    style: TextStyle(
+                        color: Colors.red.shade300,
+                        fontWeight: FontWeight.w500,
+                        letterSpacing: 1)),
+                onPressed: () async {
+                  password.clear();
+                  Navigator.pop(context);
+                },
+              ),
+              FlatButton(
+                child: Text('Cancel',
+                    style: TextStyle(
+                        color: Theme.of(context).primaryColor,
+                        fontWeight: FontWeight.w500,
+                        letterSpacing: 1)),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              )
+            ],
+          );
+        });
+  }
+
 }

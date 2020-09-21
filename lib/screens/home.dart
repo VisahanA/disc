@@ -1,6 +1,5 @@
 import 'package:disc/screens/discproperties.dart';
 import 'package:disc/screens/rulebookdisc.dart';
-import 'package:disc/screens/jsonstorage.dart';
 import 'package:disc/screens/settings.dart';
 import 'package:disc/services/theme.dart';
 import 'package:flutter/cupertino.dart';
@@ -53,7 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       Navigator.push(
                           context,
                           CupertinoPageRoute(
-                              builder: (context) =>  settings()));
+                              builder: (context) =>  SettingsPage()));
                     },
                     child: AnimatedContainer(
                       duration: Duration(milliseconds: 200),
@@ -110,7 +109,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: Container(
                   padding: const EdgeInsets.all(10.0),
                   child: const Text(
-                      'Know about DISC',
+                      'Tips to follow',
                       style: TextStyle(fontSize: 28)
                   ),
                 ),
