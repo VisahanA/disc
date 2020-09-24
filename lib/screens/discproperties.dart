@@ -1,4 +1,3 @@
-import 'package:disc/screens/disctypes.dart';
 import 'package:disc/services/theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -33,19 +32,20 @@ class DiscpropertiesState extends State<Discproperties> {
       DeviceOrientation.portraitUp,
     ]);
     return Scaffold(
+      backgroundColor: Colors.deepPurple[100],
       appBar: AppBar(
         title: const Text('Tips to follow  '),
         backgroundColor: Colors.deepPurple,
       ),
       body: Center(
         child: AnimatedContainer(
-          decoration: BoxDecoration(
-              gradient: LinearGradient(
-                  begin:Alignment.topCenter,
-                  end:Alignment.bottomCenter,
-                  stops: [0.4, 1],
-                  colors: [Colors.white,primaryColor])
-          ),
+          // decoration: BoxDecoration(
+          //     gradient: LinearGradient(
+          //         begin:Alignment.topCenter,
+          //         end:Alignment.bottomCenter,
+          //         stops: [0.4, 1],
+          //         colors: [Colors.white,primaryColor])
+          // ),
           duration: Duration(milliseconds: 200),
           child: ListView(
             physics: BouncingScrollPhysics(),

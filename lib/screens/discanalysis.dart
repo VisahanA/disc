@@ -1,12 +1,13 @@
 import 'dart:async';
+import 'package:disc/screens/home.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter_cursor/flutter_cursor.dart';
 
 import 'package:disc/screens/rulebookdisc.dart';
 import 'package:flutter/material.dart';
 import 'package:outline_material_icons/outline_material_icons.dart';
 import 'package:pie_chart/pie_chart.dart';
 import 'package:share/share.dart';
-import 'home.dart'; // import the package
-import 'dart:math';
 import 'package:confetti/confetti.dart';
 
 class discanalysis extends StatefulWidget {
@@ -100,7 +101,7 @@ bool _loadChart = false;
     if(questioncount.four<0){
       four=0;
     }
-
+    int flag=0;
     data.addAll({
       'Dominance': one,
       'Influence': two,
@@ -110,43 +111,68 @@ bool _loadChart = false;
     double largest= (one>two)?(one>three)?(one>four)?one:four:(three>four)?three:four:(two>three)?(two>four)?two:four:(three>four)?three:four;
     String val="";
     if(largest==one) {
-      val='HEY D’s! \nIf you are a high D person, you are more like an eagle, you are very direct, result-oriented, good at taking decisions, fast-paced, and confident about whatever you do.\nYou always look forward for new opportunities, and love to have control of the entire group you are in.\nYou are on time to every meeting, and follow your schedule perfectly.\nYour main goals would be accomplishing something which is unique and to have a great independence.To improvise on yourself, you should work on being patient,\nand should listen to details keenly.Your greatest stress reliever would be doing physical activities.\nCelebrity person in style D is Donald Trump.\nKeep going and achieve all your goals!!!!\n\n';
+      flag++;
+      val=
+       'HEY D’s! \nIf you are a high D person, you are more like an eagle, you are very direct, result-oriented, good at taking decisions, fast-paced, and confident about whatever you do.\nYou always look forward for new opportunities, and love to have control of the entire group you are in.\nYou are on time to every meeting, and follow your schedule perfectly.\nYour main goals would be accomplishing something which is unique and to have a great independence.To improvise on yourself, you should work on being patient,\nand should listen to details keenly.Your greatest stress reliever would be doing physical activities.\nCelebrity person in style D is Donald Trump.\nKeep going and achieve all your goals!!!!\n\n';
     }
     if(largest==two) {
-      val='Hey I’s! \nIf you are a high I person, you are more like a parrot, you are talkative, inspirational and an optimistic person.\nYou always keep the environment you are in with lot of energy and enthusiasm.\nYou never like being ignored or isolated, you always wanted a group of people around you.\nYour main goals would be creating strong relationships and being happy always.To improvise on yourself, you must research on all the facts before you publish to someone, and stay focused on your goals.Your greatest stress reliever would be talking to your close ones.Celebrity person in style I is Will Smith.\nContinue to spread the positive vibes!!';
+      if (flag == 1) {
+        val = val +'\n' +
+            'Hey I’s! \nIf you are a high I person, you are more like a parrot, you are talkative, inspirational and an optimistic person.\nYou always keep the environment you are in with lot of energy and enthusiasm.\nYou never like being ignored or isolated, you always wanted a group of people around you.\nYour main goals would be creating strong relationships and being happy always.To improvise on yourself, you must research on all the facts before you publish to someone, and stay focused on your goals.Your greatest stress reliever would be talking to your close ones.Celebrity person in style I is Will Smith.\nContinue to spread the positive vibes!!';
+      }
+      else {
+        val =
+        'Hey I’s! \nIf you are a high I person, you are more like a parrot, you are talkative, inspirational and an optimistic person.\nYou always keep the environment you are in with lot of energy and enthusiasm.\nYou never like being ignored or isolated, you always wanted a group of people around you.\nYour main goals would be creating strong relationships and being happy always.To improvise on yourself, you must research on all the facts before you publish to someone, and stay focused on your goals.Your greatest stress reliever would be talking to your close ones.Celebrity person in style I is Will Smith.\nContinue to spread the positive vibes!!';
+      }
     }
     if(largest==three) {
-      val='Hey S’s!\nIf you are a high I person, you are more like a dove, you get along with everyone easily, harmonious and a good listener.\nYou are always ready to help others, co-operative and like to be reserved.\nYou never like changes that makes you come out of your comfortable zone.\nYour main goals would be personal accomplishment and group acceptance.To improvise on yourself, you need to try on multitasking, and adapt to change.Your greatest stress reliever would be a good sleep.Celebrity person in style S is David Beckham.\nYour friendship is what the world needs!!';
+      if (flag == 1) {
+        val = val + '\n' +
+            'Hey S’s!\nIf you are a high I person, you are more like a dove, you get along with everyone easily, harmonious and a good listener.\nYou are always ready to help others, co-operative and like to be reserved.\nYou never like changes that makes you come out of your comfortable zone.\nYour main goals would be personal accomplishment and group acceptance.To improvise on yourself, you need to try on multitasking, and adapt to change.Your greatest stress reliever would be a good sleep.Celebrity person in style S is David Beckham.\nYour friendship is what the world needs!!';
+      }
+      else {
+        val =
+        'Hey S’s!\nIf you are a high I person, you are more like a dove, you get along with everyone easily, harmonious and a good listener.\nYou are always ready to help others, co-operative and like to be reserved.\nYou never like changes that makes you come out of your comfortable zone.\nYour main goals would be personal accomplishment and group acceptance.To improvise on yourself, you need to try on multitasking, and adapt to change.Your greatest stress reliever would be a good sleep.Celebrity person in style S is David Beckham.\nYour friendship is what the world needs!!';
+      }
     }
     if(largest==four) {
-      val='Hey C’s!\nIf you are a high C person, you are more like an Owl, you are very detail-oriented, and always have a plan and process to do something.\nYou are conscious, curious and accuracy is always what you need.\nYou tend to ask a lot of questions, and quality – oriented person.\nYour main goals would be correctness and personal growth.To improvise on yourself, you need to work on compromising things when you are in a team, and to make quick decisions.Your greatest stress reliever would be meditation or deep breaths.Celebrity person in style C is Bill Gates.\nStep out and conquer the world with your facts!!';
+      if (flag == 1) {
+        val = val + '\n' +
+            'Hey C’s!\nIf you are a high C person, you are more like an Owl, you are very detail-oriented, and always have a plan and process to do something.\nYou are conscious, curious and accuracy is always what you need.\nYou tend to ask a lot of questions, and quality – oriented person.\nYour main goals would be correctness and personal growth.To improvise on yourself, you need to work on compromising things when you are in a team, and to make quick decisions.Your greatest stress reliever would be meditation or deep breaths.Celebrity person in style C is Bill Gates.\nStep out and conquer the world with your facts!!';
+      }
+      else {
+        val =
+        'Hey C’s!\nIf you are a high C person, you are more like an Owl, you are very detail-oriented, and always have a plan and process to do something.\nYou are conscious, curious and accuracy is always what you need.\nYou tend to ask a lot of questions, and quality – oriented person.\nYour main goals would be correctness and personal growth.To improvise on yourself, you need to work on compromising things when you are in a team, and to make quick decisions.Your greatest stress reliever would be meditation or deep breaths.Celebrity person in style C is Bill Gates.\nStep out and conquer the world with your facts!!';
+      }
     }
     _loadChart = true;
-    return MaterialApp(
-      home:  Scaffold(
+    return new WillPopScope(
+        // ignore: missing_return
+        onWillPop: () async {
+          Navigator.push(
+              context,
+              CupertinoPageRoute(
+                  builder: (context) =>  MyHomePage()));
+        },
+      child: new Scaffold(
+        backgroundColor: Colors.deepPurple[100],
         appBar: AppBar(
           title: Text("Disc analysis"),
+          backgroundColor: Colors.deepPurple,
           actions: <Widget>[
-            FlatButton(
-              textColor: Colors.white,
-              onPressed: () {
-                sharecontent(one,two,three,four);
-              },
-              child: Icon(
-                OMIcons.share,
-              ),
-              shape: CircleBorder(side: BorderSide(color: Colors.transparent)), 
+          FlatButton(
+            textColor: Colors.white,
+            onPressed: () {
+              sharecontent(one,two,three,four);
+            },
+            child: Icon(
+              OMIcons.share,
             ),
+            shape: CircleBorder(side: BorderSide(color: Colors.transparent)),
+           ),
           ],
         ),
       body: Container(
-        decoration: BoxDecoration(
-            gradient: LinearGradient(
-                begin:Alignment.topLeft,
-                end:Alignment.bottomRight,
-                stops: [0.4, 1],
-                colors: [Colors.white,Colors.pink[400]])
-        ),
       child: new SingleChildScrollView(
           child: Column(
             // physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
@@ -199,7 +225,7 @@ bool _loadChart = false;
                 height: 50,
               ),
               Text(val,
-                maxLines: 20,
+                maxLines: 40,
                 softWrap: true,
                 style: TextStyle(fontSize:20),
               ),
@@ -207,21 +233,22 @@ bool _loadChart = false;
           ),
         ),
       ),
-    ));
+     ),
+    );
   }
   void sharecontent(one,two,three,four) {
     double largest= (one>two)?(one>three)?(one>four)?one:four:(three>four)?three:four:(two>three)?(two>four)?two:four:(three>four)?three:four;
     if(largest==one) {
-      Share.share('HEY D’s! \nIf you are a high D person, you are more like an eagle, you are very direct, result-oriented, good at taking decisions, fast-paced, and confident about whatever you do.\nYou always look forward for new opportunities, and love to have control of the entire group you are in.\nYou are on time to every meeting, and follow your schedule perfectly.\nYour main goals would be accomplishing something which is unique and to have a great independence.To improvise on yourself, you should work on being patient,\nand should listen to details keenly.Your greatest stress reliever would be doing physical activities.\nCelebrity person in style D is Donald Trump.\nKeep going and achieve all your goals!!!!\n\n');
+      Share.share('Hey I’m a Dominating person,Do you want to know about yourself?,check out personality testing app https://play.google.com/store/apps/details?id=com.jotpad.notes ');
     }
     if(largest==two) {
-      Share.share('Hey I’s! \nIf you are a high I person, you are more like a parrot, you are talkative, inspirational and an optimistic person.\nYou always keep the environment you are in with lot of energy and enthusiasm.\nYou never like being ignored or isolated, you always wanted a group of people around you.\nYour main goals would be creating strong relationships and being happy always.To improvise on yourself, you must research on all the facts before you publish to someone, and stay focused on your goals.Your greatest stress reliever would be talking to your close ones.Celebrity person in style I is Will Smith.\nContinue to spread the positive vibes!!');
+      Share.share('Hey I’m a Influential(extrovert) person,Do you want to know about yourself?,check out personality testing app https://play.google.com/store/apps/details?id=com.jotpad.notes');
     }
     if(largest==three) {
-      Share.share('Hey S’s!\nIf you are a high I person, you are more like a dove, you get along with everyone easily, harmonious and a good listener.\nYou are always ready to help others, co-operative and like to be reserved.\nYou never like changes that makes you come out of your comfortable zone.\nYour main goals would be personal accomplishment and group acceptance.To improvise on yourself, you need to try on multitasking, and adapt to change.Your greatest stress reliever would be a good sleep.Celebrity person in style S is David Beckham.\nYour friendship is what the world needs!!');
+      Share.share('Hey I’m a Steady person with cool and calm attitude,Do you want to know about yourself?,check out personality testing app https://play.google.com/store/apps/details?id=com.jotpad.notes');
     }
     if(largest==four) {
-      Share.share('Hey C’s!\nIf you are a high C person, you are more like an Owl, you are very detail-oriented, and always have a plan and process to do something.\nYou are conscious, curious and accuracy is always what you need.\nYou tend to ask a lot of questions, and quality – oriented person.\nYour main goals would be correctness and personal growth.To improvise on yourself, you need to work on compromising things when you are in a team, and to make quick decisions.Your greatest stress reliever would be meditation or deep breaths.Celebrity person in style C is Bill Gates.\nStep out and conquer the world with your facts!!');
+      Share.share('Hey I’m a careful and diligent person,Do you want to know about yourself?,check out personality testing app https://play.google.com/store/apps/details?id=com.jotpad.notes');
     }
   }
 }

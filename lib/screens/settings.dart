@@ -23,6 +23,11 @@ class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.deepPurple[100],
+      appBar: AppBar(
+        title: const Text('Settings'),
+        backgroundColor: Colors.deepPurple,
+      ),
       body: ListView(
         physics: BouncingScrollPhysics(),
         children: <Widget>[
@@ -36,13 +41,7 @@ class _SettingsPageState extends State<SettingsPage> {
                       Navigator.pop(context);
                     },
                     child: Container(
-                        padding:
-                        const EdgeInsets.only(top: 24, left: 24, right: 24),
-                        child: Icon(OMIcons.arrowBack)),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 16, top: 36, right: 24),
-                    child: buildHeaderWidget(context),
+                        ),
                   ),
 //Privacy Notes & Licensing
                   buildCardWidget(Column(
@@ -184,59 +183,6 @@ class _SettingsPageState extends State<SettingsPage> {
 
   void openGitHub() {
     launch('https://www.github.com/VisahanA');
-  }
-
-  final password = TextEditingController();
-
-  void setpassword(){
-    showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            shape:
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-            title: Text('Set Master Pin'),
-            contentPadding: const EdgeInsets.all(16.0),
-            content: new Row(
-              children: <Widget>[
-                new Expanded(
-                  child: new TextField(
-                    autofocus: true,
-                    controller: password,
-                    textInputAction: TextInputAction.go,
-                    keyboardType: TextInputType.numberWithOptions(),
-                    decoration: new InputDecoration(
-                        labelText: 'Pin', hintText: 'Enter Pin'),
-                    obscureText:true ,
-                  ),
-                )
-              ],
-            ),
-            actions: <Widget>[
-              FlatButton(
-                child: Text('Save',
-                    style: TextStyle(
-                        color: Colors.red.shade300,
-                        fontWeight: FontWeight.w500,
-                        letterSpacing: 1)),
-                onPressed: () async {
-                  password.clear();
-                  Navigator.pop(context);
-                },
-              ),
-              FlatButton(
-                child: Text('Cancel',
-                    style: TextStyle(
-                        color: Theme.of(context).primaryColor,
-                        fontWeight: FontWeight.w500,
-                        letterSpacing: 1)),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-              )
-            ],
-          );
-        });
   }
 
 }

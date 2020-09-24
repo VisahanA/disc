@@ -12,7 +12,7 @@ import 'discanalysis.dart';
 Future<Album>   fetchAlbum(int i) async {
   // final response = await http.get('https://127.0.0.1:5000/disc.json');
   //Linked with visahan.tk/animals
-  final response = await http.get('https://visahan.tk/animals.json');
+  final response = await http.get('https://visahan.tk/disc.json');
   final jsonresponse = json.decode(response.body);
   if (response.statusCode == 200) {
     print(jsonresponse[i]['Question']);
@@ -22,13 +22,14 @@ Future<Album>   fetchAlbum(int i) async {
     throw Exception('Failed to fetch api');
   }
 }
+
+
 class DISC_quiz extends StatefulWidget {
   final Questioncount questioncount;
   final Questioncount one;
   final Questioncount two;
   final Questioncount three;
   final Questioncount four;
-
 
   DISC_quiz({Key key, @required this.questioncount, @required this.one, @required this.two, @required this.three, @required this.four}) : super(key: key);
 
@@ -37,44 +38,49 @@ class DISC_quiz extends StatefulWidget {
 
 }
   Future<Album> futureAlbum;
-  bool pressAttention=true;
+
+
 
 class DISC_quizstate extends State<DISC_quiz>{
 
   bool pressAttention=true;
+  bool tap=false;
+  bool count=false;
+  int firstone=0;
+
+
+
+  DISC_quizstate(this.questioncount, this.one, this.two, this.three, this.four);
+
   final Questioncount questioncount;
   final Questioncount one;
   final Questioncount two;
   final Questioncount three;
   final Questioncount four;
 
-  DISC_quizstate(this.questioncount, this.one, this.two, this.three, this.four);
-
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
     ]);
-
-
     //Declaration of variables
-    int question_index =questioncount.questionindex;
+
+    int question_index = questioncount.questionindex;
     int one = questioncount.one;
-    int two =questioncount.two;
-    int three =questioncount.three;
-    int four =questioncount.four;
-
-    print(one);
-    print(two);
-    print(three);
-    print(four);
-    print("--------");
-
+    int two = questioncount.two;
+    int three = questioncount.three;
+    int four = questioncount.four;
 
     //Initialising the api
-    if(question_index<10) {
+    if((question_index<10) && (tap==false)) {
       futureAlbum = fetchAlbum(question_index);
     }
+
+    // print(one);
+    // print(two);
+    // print(three);
+    // print(four);
+    // print("--------");
 
 
     bool firstoption=false;
@@ -82,17 +88,17 @@ class DISC_quizstate extends State<DISC_quiz>{
     bool thirdoption=false;
     bool fourthoption=false;
 
-    int tap=0;
 
     return Scaffold(
+      backgroundColor: Colors.deepPurple[100],
       body: Container(
-        decoration: BoxDecoration(
-            gradient: LinearGradient(
-                begin:Alignment.topLeft,
-                end:Alignment.bottomRight,
-                stops: [0.4, 1],
-                colors: [Colors.white,Colors.pink[400]])
-        ),
+        // decoration: BoxDecoration(
+        //     gradient: LinearGradient(
+        //         begin:Alignment.topCenter,
+        //         end:Alignment.bottomCenter,
+        //         stops: [0.5, 1],
+        //         colors: [Colors.white,Colors.deepPurple[500]])
+        // ),
         child: AnimatedContainer(
           duration: Duration(milliseconds: 200),
           child: ListView(
@@ -121,7 +127,7 @@ class DISC_quizstate extends State<DISC_quiz>{
                 color: Colors.transparent,
                 child: Container(
                     decoration: BoxDecoration(
-                        color: containerColor,
+                        color: questionColor,
                         borderRadius: BorderRadius.all(Radius.circular(20.0))),
                     child: new Center(
                       child: Container(
@@ -147,22 +153,26 @@ class DISC_quizstate extends State<DISC_quiz>{
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20.0),
                 ),
-                color: pressAttention ? Colors.blueAccent[700] : Colors.green[700],
+                color: pressAttention ?containerColor : Colors.green[700],
                 onPressed: () {
                   if(question_index<10) {
-                    if(tap==0) {
+                    if(tap==false) {
+                      print("check 1 is working");
+                      // print(one);
                       firstoption=true;
-                      tap=1;
+                      tap= !tap;
+                      pressAttention = !pressAttention;
                       one=one+4;
+                      print("firstone after adding  $firstone");
                       // setState((){
-                      //   pressAttention = !pressAttention;
                       // });
                     }
                     else {
+
                       if(firstoption==true) {
                         return;
                       }
-                      tap=0;
+                      tap=false;
                       one=one-2;
                       question_index++;
                       if (question_index==10) {
@@ -210,16 +220,17 @@ class DISC_quizstate extends State<DISC_quiz>{
                 color: containerColor,
                 onPressed: () {
                   if(question_index<10) {
-                    if(tap==0) {
+                    if(tap==false) {
+                      print("tap is not 1");
                       secondoption=true;
-                      tap=1;
+                      tap=true;
                       two=two+4;
                     }
                     else {
                       if(secondoption==true) {
                         return;
                       }
-                      tap=0;
+                      tap=false;
                       two=two-2;
                       question_index++;
                       if (question_index==10) {
@@ -266,16 +277,16 @@ class DISC_quizstate extends State<DISC_quiz>{
                 color: containerColor,
                 onPressed: () {
                   if(question_index<10) {
-                    if(tap==0) {
+                    if(tap==false) {
                       thirdoption=true;
-                      tap=1;
+                      tap=true;
                       three=three+4;
                     }
                     else {
                       if(thirdoption==true) {
                         return;
                       }
-                      tap=0;
+                      tap=false;
                       three=three-2;
                       question_index++;
                       if (question_index==10) {
@@ -322,16 +333,16 @@ class DISC_quizstate extends State<DISC_quiz>{
                 color: containerColor,
                 onPressed: () {
                   if(question_index<10) {
-                    if(tap==0) {
+                    if(tap==false) {
                       fourthoption=true;
-                      tap=1;
+                      tap=true;
                       four=four+4;
                     }
                     else {
                       if(fourthoption==true) {
                         return;
                       }
-                      tap=0;
+                      tap=false;
                       four=four-2;
                       question_index++;
                       if (question_index==10) {
@@ -382,3 +393,4 @@ class DISC_quizstate extends State<DISC_quiz>{
     );
   }
 }
+

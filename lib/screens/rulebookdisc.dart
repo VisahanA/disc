@@ -26,18 +26,15 @@ class rulebookstate extends State<rulebook> {
       DeviceOrientation.portraitUp,
     ]);
     return Scaffold(
-        appBar: AppBar(
-        title: const Text('Rules to attend disc test'),
-        backgroundColor: Colors.deepPurple,
-        ),
+      backgroundColor: Colors.deepPurple[100],
       body: Container(
-        decoration: BoxDecoration(
-            gradient: LinearGradient(
-                begin:Alignment.topLeft,
-                end:Alignment.bottomRight,
-                stops: [0.4, 1],
-                colors: [Colors.white,Colors.pink[400]])
-        ),
+        // decoration: BoxDecoration(
+        //     gradient: LinearGradient(
+        //         begin:Alignment.topCenter,
+        //         end:Alignment.bottomCenter,
+        //         stops: [0.5, 1],
+        //         colors: [Colors.white,Colors.deepPurple[500]])
+        // ),
         child: AnimatedContainer(
           duration: Duration(milliseconds: 200),
           child: ListView(
