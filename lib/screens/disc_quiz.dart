@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'discanalysis.dart';
+import 'dart:math';
 
 Future<Album>   fetchAlbum(int i) async {
   // final response = await http.get('https://127.0.0.1:5000/disc.json');
@@ -15,7 +16,7 @@ Future<Album>   fetchAlbum(int i) async {
   final response = await http.get('https://visahan.tk/disc.json');
   final jsonresponse = json.decode(response.body);
   if (response.statusCode == 200) {
-    print(jsonresponse[i]['Question']);
+    // print(jsonresponse[i]['Question']);
     return Album.fromJson(jsonresponse[i]);
   }
   else {
@@ -38,7 +39,7 @@ class DISC_quiz extends StatefulWidget {
 
 }
   Future<Album> futureAlbum;
-
+  Set<int> setOfInts = Set();
 
 
 class DISC_quizstate extends State<DISC_quiz>{
@@ -47,8 +48,7 @@ class DISC_quizstate extends State<DISC_quiz>{
   bool tap=false;
   bool count=false;
   int firstone=0;
-
-
+  int random_number=0;
 
   DISC_quizstate(this.questioncount, this.one, this.two, this.three, this.four);
 
@@ -71,9 +71,21 @@ class DISC_quizstate extends State<DISC_quiz>{
     int three = questioncount.three;
     int four = questioncount.four;
 
-    //Initialising the api
-    if((question_index<10) && (tap==false)) {
-      futureAlbum = fetchAlbum(question_index);
+    //Random question generation
+    random_number=Random().nextInt(11);
+    bool value=setOfInts.add(random_number);
+    print("Set value $setOfInts");
+    print(value);
+
+    //Fetch  api
+    if((question_index<10) && (tap==false) && (value==true)) {
+      print ("random number $random_number");
+      futureAlbum = fetchAlbum(random_number);
+    }
+    else if((question_index<10) && (tap==false) && (value==false)) {
+      print("false terms printed");
+      Questioncount(
+          question_index, one, two, three, four);
     }
 
     // print(one);
@@ -82,7 +94,7 @@ class DISC_quizstate extends State<DISC_quiz>{
     // print(four);
     // print("--------");
 
-
+    //To avoid double tap of same option in a particular state
     bool firstoption=false;
     bool secondoption=false;
     bool thirdoption=false;
@@ -92,13 +104,6 @@ class DISC_quizstate extends State<DISC_quiz>{
     return Scaffold(
       backgroundColor: Colors.deepPurple[100],
       body: Container(
-        // decoration: BoxDecoration(
-        //     gradient: LinearGradient(
-        //         begin:Alignment.topCenter,
-        //         end:Alignment.bottomCenter,
-        //         stops: [0.5, 1],
-        //         colors: [Colors.white,Colors.deepPurple[500]])
-        // ),
         child: AnimatedContainer(
           duration: Duration(milliseconds: 200),
           child: ListView(
@@ -110,7 +115,6 @@ class DISC_quizstate extends State<DISC_quiz>{
                   GestureDetector(
                     behavior: HitTestBehavior.opaque,
                     onTap: () {
-
                     },
                     child: AnimatedContainer(
                       duration: Duration(milliseconds: 200),
@@ -157,18 +161,12 @@ class DISC_quizstate extends State<DISC_quiz>{
                 onPressed: () {
                   if(question_index<10) {
                     if(tap==false) {
-                      print("check 1 is working");
-                      // print(one);
                       firstoption=true;
                       tap= !tap;
                       pressAttention = !pressAttention;
                       one=one+4;
-                      print("firstone after adding  $firstone");
-                      // setState((){
-                      // });
                     }
                     else {
-
                       if(firstoption==true) {
                         return;
                       }
@@ -221,7 +219,6 @@ class DISC_quizstate extends State<DISC_quiz>{
                 onPressed: () {
                   if(question_index<10) {
                     if(tap==false) {
-                      print("tap is not 1");
                       secondoption=true;
                       tap=true;
                       two=two+4;

@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:disc/screens/home.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_cursor/flutter_cursor.dart';
+import 'dart:math';
 
 import 'package:disc/screens/rulebookdisc.dart';
 import 'package:flutter/material.dart';
