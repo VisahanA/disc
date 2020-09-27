@@ -39,13 +39,6 @@ class DiscpropertiesState extends State<Discproperties> {
       ),
       body: Center(
         child: AnimatedContainer(
-          // decoration: BoxDecoration(
-          //     gradient: LinearGradient(
-          //         begin:Alignment.topCenter,
-          //         end:Alignment.bottomCenter,
-          //         stops: [0.4, 1],
-          //         colors: [Colors.white,primaryColor])
-          // ),
           duration: Duration(milliseconds: 200),
           child: ListView(
             physics: BouncingScrollPhysics(),

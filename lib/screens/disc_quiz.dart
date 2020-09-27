@@ -64,7 +64,6 @@ class DISC_quizstate extends State<DISC_quiz>{
       DeviceOrientation.portraitUp,
     ]);
     //Declaration of variables
-
     int question_index = questioncount.questionindex;
     int one = questioncount.one;
     int two = questioncount.two;
@@ -72,34 +71,25 @@ class DISC_quizstate extends State<DISC_quiz>{
     int four = questioncount.four;
 
     //Random question generation
-    random_number=Random().nextInt(11);
+    random_number=Random().nextInt(17);
     bool value=setOfInts.add(random_number);
     print("Set value $setOfInts");
     print(value);
 
     //Fetch  api
-    if((question_index<10) && (tap==false) && (value==true)) {
+    if((question_index<10) && (tap==false)) {
       print ("random number $random_number");
-      futureAlbum = fetchAlbum(random_number);
+      while (value==false) {
+        random_number=Random().nextInt(17);
+        value=setOfInts.add(random_number);
+      }
+        futureAlbum = fetchAlbum(random_number);
     }
-    else if((question_index<10) && (tap==false) && (value==false)) {
-      print("false terms printed");
-      Questioncount(
-          question_index, one, two, three, four);
-    }
-
-    // print(one);
-    // print(two);
-    // print(three);
-    // print(four);
-    // print("--------");
-
     //To avoid double tap of same option in a particular state
     bool firstoption=false;
     bool secondoption=false;
     bool thirdoption=false;
     bool fourthoption=false;
-
 
     return Scaffold(
       backgroundColor: Colors.deepPurple[100],
@@ -115,6 +105,7 @@ class DISC_quizstate extends State<DISC_quiz>{
                   GestureDetector(
                     behavior: HitTestBehavior.opaque,
                     onTap: () {
+
                     },
                     child: AnimatedContainer(
                       duration: Duration(milliseconds: 200),

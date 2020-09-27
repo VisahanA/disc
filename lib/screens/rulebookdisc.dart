@@ -28,13 +28,6 @@ class rulebookstate extends State<rulebook> {
     return Scaffold(
       backgroundColor: Colors.deepPurple[100],
       body: Container(
-        // decoration: BoxDecoration(
-        //     gradient: LinearGradient(
-        //         begin:Alignment.topCenter,
-        //         end:Alignment.bottomCenter,
-        //         stops: [0.5, 1],
-        //         colors: [Colors.white,Colors.deepPurple[500]])
-        // ),
         child: AnimatedContainer(
           duration: Duration(milliseconds: 200),
           child: ListView(
