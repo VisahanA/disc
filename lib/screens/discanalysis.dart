@@ -1,8 +1,5 @@
-import 'dart:async';
 import 'package:disc/screens/home.dart';
 import 'package:flutter/cupertino.dart';
-import 'dart:math';
-
 import 'package:disc/screens/rulebookdisc.dart';
 import 'package:flutter/material.dart';
 import 'package:outline_material_icons/outline_material_icons.dart';
@@ -117,7 +114,8 @@ bool _loadChart = false;
     }
     if(largest==two) {
       if (flag == 1) {
-        val = val +'\n' +
+        flag++;
+        val = val +'\n'+
             'Hey I’s! \nIf you are a high I person, you are more like a parrot, you are talkative, inspirational and an optimistic person.\nYou always keep the environment you are in with lot of energy and enthusiasm.\nYou never like being ignored or isolated, you always wanted a group of people around you.\nYour main goals would be creating strong relationships and being happy always.To improvise on yourself, you must research on all the facts before you publish to someone, and stay focused on your goals.Your greatest stress reliever would be talking to your close ones.Celebrity person in style I is Will Smith.\nContinue to spread the positive vibes!!';
       }
       else {
@@ -127,6 +125,7 @@ bool _loadChart = false;
     }
     if(largest==three) {
       if (flag == 1) {
+        flag++;
         val = val + '\n' +
             'Hey S’s!\nIf you are a high I person, you are more like a dove, you get along with everyone easily, harmonious and a good listener.\nYou are always ready to help others, co-operative and like to be reserved.\nYou never like changes that makes you come out of your comfortable zone.\nYour main goals would be personal accomplishment and group acceptance.To improvise on yourself, you need to try on multitasking, and adapt to change.Your greatest stress reliever would be a good sleep.Celebrity person in style S is David Beckham.\nYour friendship is what the world needs!!';
       }
@@ -163,7 +162,7 @@ bool _loadChart = false;
           FlatButton(
             textColor: Colors.white,
             onPressed: () {
-              sharecontent(one,two,three,four);
+              Share.share(sharecontent(one,two,three,four));
             },
             child: Icon(
               OMIcons.share,
@@ -236,19 +235,27 @@ bool _loadChart = false;
      ),
     );
   }
-  void sharecontent(one,two,three,four) {
+  String sharecontent(one,two,three,four) {
     double largest= (one>two)?(one>three)?(one>four)?one:four:(three>four)?three:four:(two>three)?(two>four)?two:four:(three>four)?three:four;
+    int flag=0;
+    String value="";
+
     if(largest==one) {
-      Share.share('Hey I’m a Dominating person,Do you want to know about yourself?,check out personality testing app https://play.google.com/store/apps/details?id=com.jotpad.notes ');
+      flag++;
+      value='Hey I’m a Dominating person(extrovert),Check out who you are by taking our personality test. \n https://play.google.com/store/apps/details?id=com.personaliy.disc';
     }
+
     if(largest==two) {
-      Share.share('Hey I’m a Influential(extrovert) person,Do you want to know about yourself?,check out personality testing app https://play.google.com/store/apps/details?id=com.jotpad.notes');
+        value='Hey I’m a Influential(extrovert) person,Check out who you are by taking our personality test. \n https://play.google.com/store/apps/details?id=com.personaliy.disc';
     }
+
     if(largest==three) {
-      Share.share('Hey I’m a Steady person with cool and calm attitude,Do you want to know about yourself?,check out personality testing app https://play.google.com/store/apps/details?id=com.jotpad.notes');
+        value='Hey I’m a Steady person(introvert) with cool and calm attitude,Check out who you are by taking our personality test. \nhttps://play.google.com/store/apps/details?id=com.personaliy.disc';
     }
+
     if(largest==four) {
-      Share.share('Hey I’m a careful and diligent person,Do you want to know about yourself?,check out personality testing app https://play.google.com/store/apps/details?id=com.jotpad.notes');
+        value='Hey I’m a careful and diligent(introvert) person,Check out who you are by taking our personality test. \n https://play.google.com/store/apps/details?id=com.personaliy.disc';
     }
+    return value;
   }
 }

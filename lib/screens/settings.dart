@@ -65,7 +65,7 @@ class _SettingsPageState extends State<SettingsPage> {
                                   fontSize: 18,
                                   color: Colors.white,
                                 )),
-                            url: 'https://visahan.tk/jotpadprivacypolicy.html',
+                            url: 'https://disc-d4a8a.web.app/discprivacypolicy.html',
                           ),
                         ],
                       ),
@@ -82,7 +82,7 @@ class _SettingsPageState extends State<SettingsPage> {
                                   fontSize: 18,
                                   color: Colors.white,
                                 )),
-                            url: 'https://visahan.tk/termsandcondition.html',
+                            url: 'https://disc-d4a8a.web.app/disctermsandcondtions.html',
                           ),
                         ],
                       ),
@@ -128,6 +128,35 @@ class _SettingsPageState extends State<SettingsPage> {
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(16)),
                           onPressed: openGitHub,
+                        ),
+                      ),
+                      Center(
+                        child: Text('Content Writings'.toUpperCase(),
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w500,
+                                letterSpacing: 1)),
+                      ),
+                      Center(
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 8.0, bottom: 4.0),
+                            child: Text(
+                              'Vivitha',
+                              style: TextStyle(fontFamily: 'ZillaSlab', fontSize: 24,color: Colors.white),
+                            ),
+                          )),
+                      Container(
+                        alignment: Alignment.center,
+                        child: OutlineButton.icon(
+                          icon: Icon(OMIcons.link),
+                          label: Text('INSTAGRAM',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w500,
+                                  letterSpacing: 1,
+                                  color: Colors.white)),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(16)),
+                          onPressed: openInstagram,
                         ),
                       ),
                     ],
@@ -183,6 +212,9 @@ class _SettingsPageState extends State<SettingsPage> {
 
   void openGitHub() {
     launch('https://www.github.com/VisahanA');
+  }
+  void openInstagram() {
+    launch('https://www.instagram.com/stirring_quotes/');
   }
 
 }

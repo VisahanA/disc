@@ -9,11 +9,10 @@ import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'discanalysis.dart';
 import 'dart:math';
+import 'package:toast/toast.dart';
 
 Future<Album>   fetchAlbum(int i) async {
-  // final response = await http.get('https://127.0.0.1:5000/disc.json');
-  //Linked with visahan.tk/animals
-  final response = await http.get('https://visahan.tk/disc.json');
+  final response = await http.get('https://disc-d4a8a.web.app/disc.json');
   final jsonresponse = json.decode(response.body);
   if (response.statusCode == 200) {
     // print(jsonresponse[i]['Question']);
@@ -115,7 +114,7 @@ class DISC_quizstate extends State<DISC_quiz>{
                   ),
                 ],
               ),
-              Container(height: 50),
+              Container(height: 30),
               Container(
                 height: 150.0,
                 width: 300.0,
@@ -143,7 +142,7 @@ class DISC_quizstate extends State<DISC_quiz>{
                       ),
                     )),
               ),
-              Container(height:120),
+              Container(height:90),
               RaisedButton(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20.0),
@@ -156,6 +155,7 @@ class DISC_quizstate extends State<DISC_quiz>{
                       tap= !tap;
                       pressAttention = !pressAttention;
                       one=one+4;
+                      Toast.show("1st option has been choosen", context, duration: Toast.LENGTH_SHORT, gravity:  Toast.BOTTOM);
                     }
                     else {
                       if(firstoption==true) {
@@ -213,6 +213,7 @@ class DISC_quizstate extends State<DISC_quiz>{
                       secondoption=true;
                       tap=true;
                       two=two+4;
+                      Toast.show("1st option has been choosen", context, duration: Toast.LENGTH_SHORT, gravity:  Toast.BOTTOM);
                     }
                     else {
                       if(secondoption==true) {
@@ -269,6 +270,7 @@ class DISC_quizstate extends State<DISC_quiz>{
                       thirdoption=true;
                       tap=true;
                       three=three+4;
+                      Toast.show("1st option has been choosen", context, duration: Toast.LENGTH_SHORT, gravity:  Toast.BOTTOM);
                     }
                     else {
                       if(thirdoption==true) {
@@ -325,6 +327,7 @@ class DISC_quizstate extends State<DISC_quiz>{
                       fourthoption=true;
                       tap=true;
                       four=four+4;
+                      Toast.show("1st option has been choosen", context, duration: Toast.LENGTH_SHORT, gravity:  Toast.BOTTOM);
                     }
                     else {
                       if(fourthoption==true) {

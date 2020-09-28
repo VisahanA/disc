@@ -72,7 +72,7 @@ class DiscpropertiesState extends State<Discproperties> {
                     barrierDismissible: false, // user must tap button!
                     builder: (BuildContext context) {
                       return AlertDialog(
-                        title: Text('Domination'),
+                        title: Text('Dominance'),
                         content: SingleChildScrollView(
                           child: ListBody(
                             children: <Widget>[

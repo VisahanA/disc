@@ -52,13 +52,25 @@ class rulebookstate extends State<rulebook> {
                 style: TextStyle(fontSize: 24,
                     fontWeight: FontWeight.bold),
               ),
-              Text(
-                'Rule 1: You should answer the questions immediately as you read, without thinking much. \n\n'
-                    ' Rule 2: You will have to choose two options, option 1 should be the one which you do actually (best-case scenario), and option two should be the one you would never do (worst-case scenario).',
-                maxLines: 10,
-                softWrap: true,
-                style: TextStyle(fontSize:20),
+            new RichText(
+              text: new TextSpan(
+                // Note: Styles for TextSpans must be explicitly defined.
+                // Child text spans will inherit styles from parent
+                style: new TextStyle(
+                  fontSize: 20.0,
+                  color: Colors.black,
+                ),
+                children: <TextSpan>[
+                  new TextSpan(text: 'Rule 1: You should answer the questions immediately as you read, without thinking much. \n\n'),
+                  new TextSpan(text:' Rule 2: You will have to choose',
+                  ),
+                  new TextSpan(text:' two options', style: new TextStyle(fontWeight: FontWeight.bold)
+                  ),
+                  new TextSpan(text:', option 1 should be the one which you do actually (best-case scenario), and option two should be the one you would never do (worst-case scenario).'
+                  ),
+                ],
               ),
+            ),
               Container(height: 20),
               FlatButton(
                 shape: RoundedRectangleBorder(
