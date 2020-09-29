@@ -241,19 +241,19 @@ bool _loadChart = false;
     String value="";
 
     if(largest==one) {
-      value='Hey guys! I belong to the most interesting behavior profile called Dominance(extrovert)! Want to know yours?? \n https://play.google.com/store/apps/details?id=com.personaliy.disc';
+      value='Hey guys! I belong to the most interesting behavior profile called Dominance(extrovert)! Want to know yours?? \n https://play.google.com/store/apps/details?id=com.personality.disc';
     }
 
     if(largest==two) {
-        value='Hey guys! I belong to the most interesting behavior profile called Influence(extrovert)! Want to know yours?? \n https://play.google.com/store/apps/details?id=com.personaliy.disc';
+        value='Hey guys! I belong to the most interesting behavior profile called Influence(extrovert)! Want to know yours?? \n https://play.google.com/store/apps/details?id=com.personality.disc';
     }
 
     if(largest==three) {
-        value='Hey guys! I belong to the most interesting behavior profile called Steadiness(introvert)! Want to know yours?? \nhttps://play.google.com/store/apps/details?id=com.personaliy.disc';
+        value='Hey guys! I belong to the most interesting behavior profile called Steadiness(introvert)! Want to know yours?? \nhttps://play.google.com/store/apps/details?id=com.personality.disc';
     }
 
     if(largest==four) {
-      value='Hey guys! I belong to the most interesting behavior profile called Conscientiousness(introvert)! Want to know yours?? \nhttps://play.google.com/store/apps/details?id=com.personaliy.disc';
+      value='Hey guys! I belong to the most interesting behavior profile called Conscientiousness(introvert)! Want to know yours?? \nhttps://play.google.com/store/apps/details?id=com.personality.disc';
     }
     return value;
   }

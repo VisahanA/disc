@@ -155,7 +155,7 @@ class DISC_quizstate extends State<DISC_quiz>{
                       tap= !tap;
                       pressAttention = !pressAttention;
                       one=one+4;
-                      Toast.show("1st option has been choosen", context, duration: Toast.LENGTH_SHORT, gravity:  Toast.BOTTOM);
+                      Toast.show("Choice has been made for best case scenario", context, duration: Toast.LENGTH_SHORT, gravity:  Toast.BOTTOM);
                     }
                     else {
                       if(firstoption==true) {
@@ -213,7 +213,7 @@ class DISC_quizstate extends State<DISC_quiz>{
                       secondoption=true;
                       tap=true;
                       two=two+4;
-                      Toast.show("1st option has been choosen", context, duration: Toast.LENGTH_SHORT, gravity:  Toast.BOTTOM);
+                      Toast.show("Choice has been made for best case scenario", context, duration: Toast.LENGTH_SHORT, gravity:  Toast.BOTTOM);
                     }
                     else {
                       if(secondoption==true) {
@@ -270,7 +270,7 @@ class DISC_quizstate extends State<DISC_quiz>{
                       thirdoption=true;
                       tap=true;
                       three=three+4;
-                      Toast.show("1st option has been choosen", context, duration: Toast.LENGTH_SHORT, gravity:  Toast.BOTTOM);
+                      Toast.show("Choice has been made for best case scenario", context, duration: Toast.LENGTH_SHORT, gravity:  Toast.BOTTOM);
                     }
                     else {
                       if(thirdoption==true) {
@@ -327,7 +327,7 @@ class DISC_quizstate extends State<DISC_quiz>{
                       fourthoption=true;
                       tap=true;
                       four=four+4;
-                      Toast.show("1st option has been choosen", context, duration: Toast.LENGTH_SHORT, gravity:  Toast.BOTTOM);
+                      Toast.show("Choice has been made for best case scenario", context, duration: Toast.LENGTH_SHORT, gravity:  Toast.BOTTOM);
                     }
                     else {
                       if(fourthoption==true) {
