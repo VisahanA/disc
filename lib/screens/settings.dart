@@ -8,11 +8,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:link/link.dart';
 
 class SettingsPage extends StatefulWidget {
-  Function(Brightness brightness) changeTheme;
-  SettingsPage({Key key, Function(Brightness brightness) changeTheme})
-      : super(key: key) {
-    this.changeTheme = changeTheme;
-  }
+
   @override
   _SettingsPageState createState() => _SettingsPageState();
 }
@@ -88,8 +84,6 @@ class _SettingsPageState extends State<SettingsPage> {
                       ),
                     ],
                   )),
-
-
                   buildCardWidget(Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: <Widget>[
@@ -102,7 +96,7 @@ class _SettingsPageState extends State<SettingsPage> {
                         height: 20,
                       ),
                       Center(
-                        child: Text('Developed by'.toUpperCase(),
+                        child: Text('Developed'.toUpperCase(),
                             style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.w500,
@@ -131,7 +125,7 @@ class _SettingsPageState extends State<SettingsPage> {
                         ),
                       ),
                       Center(
-                        child: Text('Content Writings'.toUpperCase(),
+                        child: Text('Content Writer'.toUpperCase(),
                             style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.w500,
@@ -167,7 +161,6 @@ class _SettingsPageState extends State<SettingsPage> {
       ),
     );
   }
-
   Widget buildCardWidget(Widget child) {
     return Container(
       decoration: BoxDecoration(
@@ -184,32 +177,6 @@ class _SettingsPageState extends State<SettingsPage> {
       child: child,
     );
   }
-
-  Widget buildHeaderWidget(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(top: 8, bottom: 16, left: 8),
-      child: Text(
-        'Settings',
-        style: TextStyle(
-            fontFamily: 'ZillaSlab',
-            fontWeight: FontWeight.w700,
-            fontSize: 28,
-            color: Theme.of(context).primaryColor),
-      ),
-    );
-  }
-
-  void handleThemeSelection(String value) {
-    setState(() {
-      selectedTheme = value;
-    });
-    if (value == 'light') {
-      widget.changeTheme(Brightness.light);
-    } else {
-      widget.changeTheme(Brightness.dark);
-    }
-  }
-
   void openGitHub() {
     launch('https://www.github.com/VisahanA');
   }

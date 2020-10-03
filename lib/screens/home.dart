@@ -7,10 +7,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/services.dart';
 import 'package:outline_material_icons/outline_material_icons.dart';
-import 'package:stagehand/stagehand.dart';
 
 
-class MyHomePage extends StatefulWidget {
+
+// ignore: must_be_immutable
+class  MyHomePage extends StatefulWidget {
   Function(Brightness brightness) changeTheme;
   MyHomePage({Key key, this.title})
       : super(key: key) {

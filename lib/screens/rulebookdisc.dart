@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/services.dart';
 
-
+// ignore: must_be_immutable, camel_case_types
 class rulebook extends StatefulWidget {
   Function(Brightness brightness) changeTheme;
   rulebook({Key key, this.title})
@@ -19,6 +19,7 @@ class rulebook extends StatefulWidget {
   rulebookstate createState() => rulebookstate();
 }
 
+// ignore: camel_case_types
 class rulebookstate extends State<rulebook> {
   @override
   Widget build(BuildContext context) {
@@ -61,12 +62,13 @@ class rulebookstate extends State<rulebook> {
                   color: Colors.black,
                 ),
                 children: <TextSpan>[
-                  new TextSpan(text: 'Rule 1: You should answer the questions immediately as you read, without thinking much. \n\n'),
-                  new TextSpan(text:' Rule 2: You will have to choose',
+                  new TextSpan(text: 'Rule 1: You will be given with 10 questions for evaluation,you should answer the question immediately as you read ,without thinking much without thinking much. \n\n'),
+                  new TextSpan(text: 'Rule 2: You should answer the question immediately as you read ,without thinking much without thinking much. \n\n'),
+                  new TextSpan(text:' Rule 3: You will have to choose',
                   ),
                   new TextSpan(text:' two options', style: new TextStyle(fontWeight: FontWeight.bold)
                   ),
-                  new TextSpan(text:', option 1 should be the one which you do actually (best-case scenario), and option two should be the one you would never do (worst-case scenario).'
+                  new TextSpan(text:', Option 1 should be the one which you do actually (best-case scenario), and Option two should be the one you would never do (worst-case scenario).'
                   ),
                 ],
               ),
@@ -79,7 +81,7 @@ class rulebookstate extends State<rulebook> {
                 color: containerColor,
                 onPressed: () {
                   Navigator.pop(context);
-                  Navigator.push(context, new MaterialPageRoute(builder: (context) => DISC_quiz(questioncount: new Questioncount(0,0,0,0,0))));
+                  Navigator.push(context, new MaterialPageRoute(builder: (context) => DISC_quiz(questioncount: new Questioncount(0,0,0,0,0), four: null, one: null, three: null, two: null,)));
                 },
                 textColor: Colors.white,
 //                padding: const EdgeInsets.all(0.0),
@@ -100,7 +102,6 @@ class rulebookstate extends State<rulebook> {
     );
   }
 }
-
 
 class Questioncount {
   final int questionindex;

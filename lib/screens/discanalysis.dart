@@ -7,6 +7,7 @@ import 'package:pie_chart/pie_chart.dart';
 import 'package:share/share.dart';
 import 'package:confetti/confetti.dart';
 
+// ignore: camel_case_types
 class discanalysis extends StatefulWidget {
   final Questioncount questioncount;
   final Questioncount one;
@@ -22,6 +23,7 @@ class discanalysis extends StatefulWidget {
   discanalysisstate createState() => discanalysisstate(this.questioncount,this.one,this.two,this.three,this.four);
 }
 
+// ignore: camel_case_types
 class discanalysisstate extends State<discanalysis>{
   final Questioncount questioncount;
   final Questioncount one;
@@ -237,7 +239,6 @@ bool _loadChart = false;
   }
   String sharecontent(one,two,three,four) {
     double largest= (one>two)?(one>three)?(one>four)?one:four:(three>four)?three:four:(two>three)?(two>four)?two:four:(three>four)?three:four;
-    int flag=0;
     String value="";
 
     if(largest==one) {

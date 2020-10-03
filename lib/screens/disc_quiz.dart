@@ -15,7 +15,7 @@ Future<Album>   fetchAlbum(int i) async {
   final response = await http.get('https://disc-d4a8a.web.app/disc.json');
   final jsonresponse = json.decode(response.body);
   if (response.statusCode == 200) {
-    // print(jsonresponse[i]['Question']);
+    print(jsonresponse[i]['Question']);
     return Album.fromJson(jsonresponse[i]);
   }
   else {
@@ -23,7 +23,7 @@ Future<Album>   fetchAlbum(int i) async {
   }
 }
 
-
+// ignore: camel_case_types
 class DISC_quiz extends StatefulWidget {
   final Questioncount questioncount;
   final Questioncount one;
@@ -41,12 +41,13 @@ class DISC_quiz extends StatefulWidget {
   Set<int> setOfInts = Set();
 
 
+// ignore: camel_case_types
 class DISC_quizstate extends State<DISC_quiz>{
 
   bool pressAttention=true;
   bool tap=false;
   bool count=false;
-  int firstone=0;
+  // ignore: non_constant_identifier_names
   int random_number=0;
 
   DISC_quizstate(this.questioncount, this.one, this.two, this.three, this.four);
@@ -63,33 +64,35 @@ class DISC_quizstate extends State<DISC_quiz>{
       DeviceOrientation.portraitUp,
     ]);
     //Declaration of variables
-    int question_index = questioncount.questionindex;
+    int questionIndex = questioncount.questionindex;
     int one = questioncount.one;
     int two = questioncount.two;
     int three = questioncount.three;
     int four = questioncount.four;
 
+    int questiondisplaycount=questionIndex+1;
+
     //Random question generation
-    random_number=Random().nextInt(17);
+    random_number=Random().nextInt(29);
     bool value=setOfInts.add(random_number);
     print("Set value $setOfInts");
-    print(value);
 
     //Fetch  api
-    if((question_index<10) && (tap==false)) {
-      print ("random number $random_number");
+    if((questionIndex<10) && (tap==false)) {
       while (value==false) {
-        random_number=Random().nextInt(17);
+        random_number=Random().nextInt(29);
         value=setOfInts.add(random_number);
       }
         futureAlbum = fetchAlbum(random_number);
     }
+
     //To avoid double tap of same option in a particular state
     bool firstoption=false;
     bool secondoption=false;
     bool thirdoption=false;
     bool fourthoption=false;
 
+    //Widget content
     return Scaffold(
       backgroundColor: Colors.deepPurple[100],
       body: Container(
@@ -130,12 +133,11 @@ class DISC_quizstate extends State<DISC_quiz>{
                           future: futureAlbum,
                           builder: (context, snapshot) {
                             if (snapshot.hasData) {
-                              return Text(snapshot.data.question,
+                              return Text("$questiondisplaycount)"+" "+snapshot.data.question,
                                   style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.bold));
                             } else if (snapshot.hasError) {
                               return Text("${snapshot.error}");
                             }
-                            // By default, show a loading spinner.
                             return CircularProgressIndicator();
                           },
                         ),
@@ -149,7 +151,7 @@ class DISC_quizstate extends State<DISC_quiz>{
                 ),
                 color: pressAttention ?containerColor : Colors.green[700],
                 onPressed: () {
-                  if(question_index<10) {
+                  if(questionIndex<10) {
                     if(tap==false) {
                       firstoption=true;
                       tap= !tap;
@@ -163,22 +165,22 @@ class DISC_quizstate extends State<DISC_quiz>{
                       }
                       tap=false;
                       one=one-2;
-                      question_index++;
-                      if (question_index==10) {
+                      questionIndex++;
+                      if (questionIndex==10) {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (BuildContext context) => new discanalysis(
-                                    questioncount: new Questioncount(
-                                        question_index, one, two, three, four))));
+                                  questioncount: new Questioncount(
+                                      questionIndex, one, two, three, four), four: null, three: null, one: null, two: null,)));
                         return;
                       }
                       Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
                               builder: (BuildContext context) => new DISC_quiz(
-                                  questioncount: new Questioncount(
-                                      question_index, one, two, three, four))));
+                                questioncount: new Questioncount(
+                                    questionIndex, one, two, three, four), three: null, four: null, two: null, one: null,)));
                     }
                   }
                 },
@@ -208,7 +210,7 @@ class DISC_quizstate extends State<DISC_quiz>{
                 ),
                 color: containerColor,
                 onPressed: () {
-                  if(question_index<10) {
+                  if(questionIndex<10) {
                     if(tap==false) {
                       secondoption=true;
                       tap=true;
@@ -221,22 +223,22 @@ class DISC_quizstate extends State<DISC_quiz>{
                       }
                       tap=false;
                       two=two-2;
-                      question_index++;
-                      if (question_index==10) {
+                      questionIndex++;
+                      if (questionIndex==10) {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (BuildContext context) => new discanalysis(
-                                    questioncount: new Questioncount(
-                                        question_index, one, two, three, four))));
+                                  questioncount: new Questioncount(
+                                      questionIndex, one, two, three, four), four: null, three: null, one: null, two: null,)));
                         return;
                       }
                       Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
                               builder: (BuildContext context) => new DISC_quiz(
-                                  questioncount: new Questioncount(
-                                      question_index, one, two, three, four))));
+                                questioncount: new Questioncount(
+                                    questionIndex, one, two, three, four), three: null, four: null, two: null, one: null,)));
                     }
                   }
                 },
@@ -265,7 +267,7 @@ class DISC_quizstate extends State<DISC_quiz>{
                 ),
                 color: containerColor,
                 onPressed: () {
-                  if(question_index<10) {
+                  if(questionIndex<10) {
                     if(tap==false) {
                       thirdoption=true;
                       tap=true;
@@ -278,14 +280,14 @@ class DISC_quizstate extends State<DISC_quiz>{
                       }
                       tap=false;
                       three=three-2;
-                      question_index++;
-                      if (question_index==10) {
+                      questionIndex++;
+                      if (questionIndex==10) {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (BuildContext context) => new discanalysis(
                                     questioncount: new Questioncount(
-                                        question_index, one, two, three, four))));
+                                        questionIndex, one, two, three, four), four: null, three: null, one: null, two: null,)));
                         return;
                       }
                       Navigator.pushReplacement(
@@ -293,7 +295,7 @@ class DISC_quizstate extends State<DISC_quiz>{
                           MaterialPageRoute(
                               builder: (BuildContext context) => new DISC_quiz(
                                   questioncount: new Questioncount(
-                                      question_index, one, two, three, four))));
+                                      questionIndex, one, two, three, four), three: null, four: null, two: null, one: null,)));
                     }
                   }
                 },
@@ -322,7 +324,7 @@ class DISC_quizstate extends State<DISC_quiz>{
                 ),
                 color: containerColor,
                 onPressed: () {
-                  if(question_index<10) {
+                  if(questionIndex<10) {
                     if(tap==false) {
                       fourthoption=true;
                       tap=true;
@@ -335,22 +337,22 @@ class DISC_quizstate extends State<DISC_quiz>{
                       }
                       tap=false;
                       four=four-2;
-                      question_index++;
-                      if (question_index==10) {
+                      questionIndex++;
+                      if (questionIndex==10) {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (BuildContext context) => new discanalysis(
-                                    questioncount: new Questioncount(
-                                        question_index, one, two, three, four))));
+                                  questioncount: new Questioncount(
+                                      questionIndex, one, two, three, four), four: null, three: null, one: null, two: null,)));
                         return;
                       }
                       Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
                               builder: (BuildContext context) => new DISC_quiz(
-                                  questioncount: new Questioncount(
-                                      question_index, one, two, three, four))));
+                                questioncount: new Questioncount(
+                                    questionIndex, one, two, three, four), three: null, four: null, two: null, one: null,)));
                     }
                   }
                 },

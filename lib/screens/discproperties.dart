@@ -1,11 +1,10 @@
-import 'package:disc/services/theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/services.dart';
 
 
-
+// ignore: must_be_immutable
 class Discproperties extends StatefulWidget {
   Function(Brightness brightness) changeTheme;
   Discproperties({Key key, this.title})
@@ -23,7 +22,6 @@ class DiscpropertiesState extends State<Discproperties> {
   void initState() {
     print("value");
     super.initState();
-    // openalertbox();
   }
 
   @override
@@ -98,7 +96,7 @@ class DiscpropertiesState extends State<Discproperties> {
                 child: Container(
                   padding: const EdgeInsets.all(10.0),
                   child: const Text(
-                      'Domination',
+                      'Dominance',
                       style: TextStyle(fontSize: 28)
                   ),
                 ),
