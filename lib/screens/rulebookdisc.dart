@@ -63,7 +63,7 @@ class rulebookstate extends State<rulebook> {
                 ),
                 children: <TextSpan>[
                   new TextSpan(text: 'Rule 1: You will be given with 10 questions for evaluation \n\n'),
-                  new TextSpan(text: 'Rule 2: You should answer the question immediately as you read ,without thinking much without thinking much. \n\n'),
+                  new TextSpan(text: 'Rule 2: You should answer the question immediately as you read ,without thinking much  \n\n'),
                   new TextSpan(text:' Rule 3: You will have to choose',
                   ),
                   new TextSpan(text:' two options', style: new TextStyle(fontWeight: FontWeight.bold)
